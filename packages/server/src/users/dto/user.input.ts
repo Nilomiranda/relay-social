@@ -3,9 +3,12 @@ import {User} from "../models/user.entity";
 
 @InputType()
 export class UserInput  {
-    @Field()
+    @Field({ nullable: false })
     name: string;
 
-    @Field()
+    @Field({ nullable: false })
     email: string;
+
+    @Field({ nullable: false })
+    password: string;
 }

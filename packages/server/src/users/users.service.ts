@@ -1,8 +1,9 @@
-import {Injectable} from "@nestjs/common";
+import {ConflictException, Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {User} from "./models/user.entity";
 import {Repository} from "typeorm";
 import {UserInput} from "./dto/user.input";
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -18,6 +19,24 @@ export class UsersService {
     }
 
     async createNewUser(userData: UserInput) {
-        return this.repo.save(new User(userData));
+        const { password, email } = userData;
+
+        if (await this.isEmailInUse(email)) {
+            throw new ConflictException('Email already in use', 'EMAIL_IS_UNIQUE');
+        }
+
+        const passwordHash = await bcrypt.hash(password, 8);
+
+        const user = new User(userData);
+
+        user.passwordHash = passwordHash;
+
+        return this.repo.save(user);
+    }
+
+    async isEmailInUse(email: string): Promise<boolean> {
+        const user = await this.repo.findOne({ where: { email } });
+
+        return !!user;
     }
 }

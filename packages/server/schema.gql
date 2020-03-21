@@ -20,11 +20,12 @@ type User {
   id: Float!
   createdDate: DateTime!
   updatedDate: DateTime!
-  name: String
-  email: String
+  name: String!
+  email: String!
 }
 
 input UserInput {
   name: String!
   email: String!
+  password: String!
 }
