@@ -1,4 +1,4 @@
-import {Field, ObjectType} from "@nestjs/graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 import {CreateDateColumn, DeepPartial, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 import * as cv from 'class-validator';
 import {IsDate, IsInt} from "class-validator";
@@ -12,7 +12,7 @@ export class BaseEntity<T = {}> {
 
     @IsInt()
     @PrimaryGeneratedColumn()
-    @Field()
+    @Field(type => ID)
     id: number;
 
     @IsDate()

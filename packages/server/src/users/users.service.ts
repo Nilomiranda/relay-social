@@ -22,7 +22,7 @@ export class UsersService {
         const { password, email } = userData;
 
         if (await this.isEmailInUse(email)) {
-            throw new ConflictException('Email already in use', 'EMAIL_IS_UNIQUE');
+            throw new ConflictException('Email already in use', 'EMAIL_IN_USE');
         }
 
         const passwordHash = await bcrypt.hash(password, 8);
