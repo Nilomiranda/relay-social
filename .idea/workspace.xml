@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584752668892</updated>
       <workItem from="1584752670129" duration="3095000" />
-      <workItem from="1584755813546" duration="22896000" />
+      <workItem from="1584755813546" duration="27074000" />
     </task>
     <servers />
   </component>

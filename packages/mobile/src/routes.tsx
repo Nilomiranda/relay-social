@@ -3,26 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
-function SignIn() {
-  const navigation = useNavigation();
-  return (
-    <View>
-      <Text>SignIn</Text>
-      <Button title="Go to sign up" onPress={() => { navigation.navigate('SignUp') }} />
-    </View>
-  )
-}
-
-function SignUp() {
-  const navigation = useNavigation();
-  return (
-    <View>
-      <Text>SignUp</Text>
-      <Button title="Go to sign in" onPress={() => { navigation.navigate('SignIn') }} />
-    </View>
-  )
-}
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 const Stack = createStackNavigator();
 
