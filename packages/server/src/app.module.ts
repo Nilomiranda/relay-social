@@ -1,19 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {GraphQLModule} from "@nestjs/graphql";
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {UsersModule} from "./users/users.module";
-import {SessionModule} from "./session/session.module";
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from './users/users.module';
+import { SessionModule } from './session/session.module';
 
 @Module({
   imports: [
-      UsersModule,
-      SessionModule,
-      TypeOrmModule.forRoot(),
-      GraphQLModule.forRoot({
-          autoSchemaFile: 'schema.gql',
-      }),
+    UsersModule,
+    SessionModule,
+    TypeOrmModule.forRoot(),
+    GraphQLModule.forRoot({
+      autoSchemaFile: 'schema.gql',
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
