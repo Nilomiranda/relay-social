@@ -44,17 +44,10 @@ function Toast(props: ToastProps) {
   }
 
   return (
-    <>
-      {
-        visible && !closed ?
-          <Container>
-            <ToastMessage>{message}</ToastMessage>
-            <ToastClose title={buttonText} color={colors.white} onPress={() => dismissToast()} />
-          </Container> :
-          null
-      }
-
-    </>
+    <Container>
+      <ToastMessage>{message}</ToastMessage>
+      <ToastClose title={buttonText} color={colors.white} onPress={() => dismissToast()} />
+    </Container>
   )
 }
 

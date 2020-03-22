@@ -3,7 +3,7 @@ import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import createNewUser from '../mutations/SignUp';
-import Toast from '../components/Toast';
+import { Snackbar } from 'react-native-paper';
 
 // design system
 import { AppText, colors, ErrorText } from '../design/system';
@@ -176,8 +176,16 @@ function SignUp() {
           { ' ' }Login
         </AppText>
       </SignUpLink>
-      <Text>{`${toastVisible}`}</Text>
-      <Toast visible={toastVisible} message="User created" buttonText="Ok"/>
+      <Snackbar
+        visible={toastVisible}
+        onDismiss={() => setToastVisible(false)}
+        action={{
+          label: 'Ok',
+          onPress: () => { setToastVisible(false) }
+        }}
+      >
+        {`User ${name} created!`}
+      </Snackbar>
     </MainContainer>
   )
 }

@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/ios/mobile.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/ios/mobile.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/signUpMutation.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/signUpMutation.graphql.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/signUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/Toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/Toast.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/SignUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/yarn.lock" afterDir="false" />
     </list>
@@ -72,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584752668892</updated>
       <workItem from="1584752670129" duration="3095000" />
-      <workItem from="1584755813546" duration="51302000" />
+      <workItem from="1584755813546" duration="52388000" />
     </task>
     <servers />
   </component>
@@ -92,9 +90,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1584912467854">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1584913378915">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584912467854" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584913378915" />
   </component>
 </project>
