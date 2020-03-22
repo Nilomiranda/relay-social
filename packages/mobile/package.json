@@ -7,19 +7,23 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "relay": "relay-compiler --src ./src --schema ../server/schema.graphql --extensions ts tsx"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
     "@react-navigation/native": "^5.1.1",
     "@react-navigation/stack": "^5.2.3",
     "@types/styled-components": "^5.0.1",
-    "react": "16.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.4.0",
+    "react-relay": "^0.0.0-experimental-8cc94ddc",
+    "relay-runtime": "^9.0.0",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
@@ -28,14 +32,20 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.60.25",
+    "@types/react-relay": "^7.0.3",
     "@types/react-test-renderer": "16.9.1",
+    "@types/relay-runtime": "^8.0.7",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "babel-jest": "^24.9.0",
+    "babel-plugin-relay": "^9.0.0",
     "eslint": "^6.5.1",
+    "graphql": "^14.6.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.9.0",
+    "relay-compiler": "^9.0.0",
+    "relay-config": "^9.0.0",
     "typescript": "^3.7.3"
   },
   "jest": {

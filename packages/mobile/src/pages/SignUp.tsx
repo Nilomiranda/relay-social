@@ -2,9 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+import createNewUser from '../mutations/signUp';
 
 // design system
 import { AppText, colors, ErrorText } from '../design/system';
+import { useRelayEnvironment } from 'react-relay/hooks';
 
 // styles
 const MainContainer = styled.View`
@@ -55,12 +57,14 @@ const AppInput = styled.TextInput<{ invalid?: boolean }>`
 
 function SignUp() {
   const navigation = useNavigation();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValidity] = useState(true);
   const [password, setPassword] = useState('');
   const [passwordValid, setPasswordValidity] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsValid, setPasswordsValidity] = useState(true);
+  const environment = useRelayEnvironment();
 
   function handleEmailChange(email: string) {
     setEmail(email);
@@ -72,6 +76,10 @@ function SignUp() {
 
   function handleConfirmPasswordChange(password: string) {
     setConfirmPassword(password);
+  }
+
+  function handleNameChange(name: string) {
+    setName(name);
   }
 
   function validatePassword() {
@@ -90,9 +98,25 @@ function SignUp() {
     setEmailValidity(!!matched);
   }
 
+  function handleSubmit() {
+    validateEmail();
+    validateBothPasswords();
+    if (!emailValid || !passwordsValid) {
+      return;
+    }
+
+    createNewUser(environment, { email, password, name });
+  }
+
   return (
     <MainContainer>
       <FormContainer>
+        <AppInput
+          autoCapitalize="none"
+          onChangeText={text => handleNameChange(text)}
+          placeholder="Name"
+        />
+
         <AppInput
           autoCapitalize="none"
           onChangeText={text => handleEmailChange(text)}
@@ -137,7 +161,7 @@ function SignUp() {
             <ErrorText>Passwords don't match</ErrorText>
         }
       </FormContainer>
-      <SignUpButton disabled={!emailValid && !passwordsValid}>
+      <SignUpButton onPress={() => handleSubmit()}>
         <ButtonLabel onPress={() => { validateBothPasswords(); validateEmail()}}>Create account</ButtonLabel>
       </SignUpButton>
       <SignUpLink>

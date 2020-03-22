@@ -12,7 +12,7 @@ import { SessionModule } from './session/session.module';
     SessionModule,
     TypeOrmModule.forRoot(),
     GraphQLModule.forRoot({
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: 'schema.graphql',
     }),
   ],
   controllers: [AppController],
