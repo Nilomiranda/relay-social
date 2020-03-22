@@ -13,6 +13,9 @@ export const colors = {
 
   black: '#000',
   white: '#FFF',
+
+  red: '#ff677d',
+  redLight: '#ffae8f',
 }
 
 // common components
@@ -22,4 +25,9 @@ interface TextProps {
 
 export const AppText = styled.Text<TextProps>`
   color: ${({ color }) => color || colors.black};
+`
+
+export const ErrorText = styled.Text`
+  color: ${colors.red};
+  margin: 10px 0;
 `
