@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import { Button, Text, TextInput, View } from 'react-native';
+import { Button, Text, TextInput, View, Alert } from 'react-native';
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+import login from '../mutations/SignIn';
 
 // design system
 import { AppText, colors, ErrorText } from '../design/system';
+import { useRelayEnvironment } from 'react-relay/hooks';
 
 // styles
 const MainContainer = styled.View`
@@ -58,6 +60,8 @@ function SignIn() {
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValidity] = useState(true);
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const environment = useRelayEnvironment();
 
   function handleEmailChange(email: string) {
     setEmail(email);
@@ -73,6 +77,19 @@ function SignIn() {
     const matched = email.match(rgx);
 
     setEmailValidity(!!matched);
+  }
+
+  function handleSubmit() {
+    login(environment, { email, password }, handleSessionCreation, handleErrors)
+  }
+
+  function handleSessionCreation() {
+    setLoginError('');
+    console.log('SESSION CREATED');
+  }
+
+  function handleErrors() {
+    setLoginError('Invalid credentials');
   }
 
   return (
@@ -99,9 +116,13 @@ function SignIn() {
           onChangeText={text => handlePasswordChange(text)}
         />
       </FormContainer>
-      <SignUpButton>
+      <SignUpButton onPress={() => handleSubmit()}>
         <ButtonLabel>Login</ButtonLabel>
       </SignUpButton>
+      {
+        loginError ?
+          <ErrorText>{loginError}</ErrorText> : null
+      }
       <SignUpLink>
         Don't have an account?
         <AppText color={colors.darkBlue} onPress={() => navigation.navigate('SignUp')}>

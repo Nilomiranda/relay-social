@@ -4,11 +4,12 @@ import {
   RecordSource,
   Store,
 } from 'relay-runtime';
+import Reactotron from 'reactotron-react-native';
 
 // @ts-ignore
 function fetchQuery(
-  operation,
-  variables,
+  operation: any,
+  variables: any,
 ) {
   return fetch('http://localhost:3000/graphql', {
     method: 'POST',
@@ -19,9 +20,14 @@ function fetchQuery(
       query: operation.text,
       variables,
     }),
-  }).then(response => {
-    return response.json();
-  });
+  }).then(async response => {
+    const parsedResponse = await response.json();
+
+    // if (parsedResponse.errors) {
+    //   return parsedResponse.errors;
+    // }
+    return parsedResponse;
+  })
 }
 
 const environment = new Environment({

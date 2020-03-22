@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b2c03f08ec38b9052819949c1474a404
+ * @relayHash 9c9e65e8ac73ba34ca53ea7b2065a9e2
  */
 
 /* eslint-disable */
@@ -14,24 +14,24 @@ export type UserInput = {|
   email: string,
   password: string,
 |};
-export type signUpMutationVariables = {|
+export type SignUpMutationVariables = {|
   input: UserInput
 |};
-export type signUpMutationResponse = {|
+export type SignUpMutationResponse = {|
   +addUser: {|
     +email: string,
     +name: string,
   |}
 |};
-export type signUpMutation = {|
-  variables: signUpMutationVariables,
-  response: signUpMutationResponse,
+export type SignUpMutation = {|
+  variables: SignUpMutationVariables,
+  response: SignUpMutationResponse,
 |};
 */
 
 
 /*
-mutation signUpMutation(
+mutation SignUpMutation(
   $input: UserInput!
 ) {
   addUser(newUserData: $input) {
@@ -76,7 +76,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "signUpMutation",
+    "name": "SignUpMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -98,7 +98,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "signUpMutation",
+    "name": "SignUpMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -125,14 +125,14 @@ return {
   },
   "params": {
     "operationKind": "mutation",
-    "name": "signUpMutation",
+    "name": "SignUpMutation",
     "id": null,
-    "text": "mutation signUpMutation(\n  $input: UserInput!\n) {\n  addUser(newUserData: $input) {\n    email\n    name\n    id\n  }\n}\n",
+    "text": "mutation SignUpMutation(\n  $input: UserInput!\n) {\n  addUser(newUserData: $input) {\n    email\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'dccf39ecb2f71af92dc7f15db7aae7eb';
+(node/*: any*/).hash = 'c135e9a42e7fbb30953227195713bd82';
 
 module.exports = node;

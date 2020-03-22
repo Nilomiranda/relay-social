@@ -7,7 +7,7 @@ export interface UserInput {
 }
 
 const signUpMutation = graphql`
-    mutation signUpMutation (
+    mutation SignUpMutation (
         $input: UserInput!
     ) {
         addUser(newUserData: $input) {
@@ -17,16 +17,16 @@ const signUpMutation = graphql`
     }
 `
 
-function createNewUser(environment: any, input: UserInput) {
+function createNewUser(environment: any, input: UserInput, onComplete: () => void) {
   commitMutation(
     environment,
     {
       mutation: signUpMutation,
       variables: { input },
       onCompleted: (res, err) => {
-        console.log(res);
+        onComplete();
       },
-      onError: err => console.log(err),
+      onError: err => console.log('request errors -> ', err),
     }
   )
 }

@@ -2,7 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import createNewUser from '../mutations/signUp';
+import createNewUser from '../mutations/SignUp';
+import Toast from '../components/Toast';
 
 // design system
 import { AppText, colors, ErrorText } from '../design/system';
@@ -64,6 +65,7 @@ function SignUp() {
   const [passwordValid, setPasswordValidity] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsValid, setPasswordsValidity] = useState(true);
+  const [toastVisible, setToastVisible] = useState(false);
   const environment = useRelayEnvironment();
 
   function handleEmailChange(email: string) {
@@ -105,7 +107,11 @@ function SignUp() {
       return;
     }
 
-    createNewUser(environment, { email, password, name });
+    createNewUser(environment, { email, password, name }, userCreated)
+  }
+
+  function userCreated() {
+    setToastVisible(true);
   }
 
   return (
@@ -170,6 +176,8 @@ function SignUp() {
           { ' ' }Login
         </AppText>
       </SignUpLink>
+      <Text>{`${toastVisible}`}</Text>
+      <Toast visible={toastVisible} message="User created" buttonText="Ok"/>
     </MainContainer>
   )
 }
