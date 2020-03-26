@@ -15,15 +15,49 @@ input LoginInput {
 type Mutation {
   addUser(newUserData: UserInput!): User!
   login(loginInput: LoginInput!): Session!
+  newPost(newPostData: PostInput!): Post!
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+  endCursor: String!
+}
+
+type Post implements Node {
+  id: ID!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+  content: String!
+}
+
+type PostEdge {
+  cursor: String!
+  node: Post!
+}
+
+input PostInput {
+  content: String!
+}
+
+type PostsConnection {
+  edges: [PostEdge!]!
+  pageInfo: PageInfo!
 }
 
 type Query {
   users: [User!]!
   user(id: Float!): User!
   validateSession(token: String!): User!
+  posts: PostsConnection!
 }
 
-type Session {
+type Session implements Node {
   id: ID!
   createdDate: DateTime!
   updatedDate: DateTime!
@@ -32,7 +66,7 @@ type Session {
   user: User!
 }
 
-type User {
+type User implements Node {
   id: ID!
   createdDate: DateTime!
   updatedDate: DateTime!
