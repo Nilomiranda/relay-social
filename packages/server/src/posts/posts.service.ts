@@ -16,6 +16,7 @@ export class PostsService {
     const { userId, pagination } = findOptions;
 
     const where = {};
+    let order: 'ASC' | 'DESC';
 
     /**
      * Conditionally creates where conditions
@@ -35,10 +36,39 @@ export class PostsService {
         });
       }
 
+      if (pagination.first && pagination.before) {
+        Object.assign(where, {
+          id: LessThan(pagination.before),
+        })
+      }
+
       if (pagination.last && pagination.before) {
         Object.assign(where, {
-          id: MoreThan(pagination.before),
+          id: LessThan(pagination.before),
         })
+      }
+
+      if (pagination.last && pagination.after) {
+        Object.assign(where, {
+          id: MoreThan(pagination.after),
+        })
+      }
+    }
+
+    // determine order
+    if (pagination) {
+      if (pagination.first && pagination.before) {
+        order = 'DESC';
+      } else if (pagination.first && pagination.after) {
+        order = 'ASC';
+      } else if (pagination.last && pagination.before) {
+        order = 'DESC';
+      } else if (pagination.last && pagination.after) {
+        order = 'ASC';
+      } else if (pagination.first && !pagination.after && !pagination.before) {
+        order = 'ASC';
+      } else if (pagination.last && !pagination.after && !pagination.before) {
+        order = 'DESC';
       }
     }
 
@@ -46,6 +76,9 @@ export class PostsService {
       where,
       relations: ['user'],
       take: pagination?.first || pagination?.last || 100000000000,
+      order: {
+        id: order,
+      }
     });
 
     const posts = res[0];
