@@ -14,8 +14,8 @@ input LoginInput {
 
 type Mutation {
   addUser(newUserData: UserInput!): User!
-  login(loginInput: LoginInput!): Session!
   newPost(newPostData: PostInput!): Post!
+  login(loginInput: LoginInput!): Session!
 }
 
 interface Node {
@@ -34,6 +34,7 @@ type Post implements Node {
   createdDate: DateTime!
   updatedDate: DateTime!
   content: String!
+  user: User!
 }
 
 type PostEdge {
@@ -53,8 +54,9 @@ type PostsConnection {
 type Query {
   users: [User!]!
   user(id: Float!): User!
-  validateSession(token: String!): User!
   posts: PostsConnection!
+  post(id: Float!): Post!
+  validateSession(token: String!): User!
 }
 
 type Session implements Node {
@@ -72,6 +74,7 @@ type User implements Node {
   updatedDate: DateTime!
   name: String!
   email: String!
+  posts: PostsConnection!
 }
 
 input UserInput {

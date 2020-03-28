@@ -10,7 +10,7 @@ export class PostsService {
   }
 
   async getPosts(): Promise<Post[]> {
-    return this.repo.find();
+    return this.repo.find({ relations: ['user'] });
   }
 
   async createNewPost(post: Post): Promise<Post> {
