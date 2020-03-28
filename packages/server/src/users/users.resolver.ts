@@ -9,7 +9,6 @@ export class UsersResolver {
 
   @Query(returns => [User])
   users(@Context() context: any): Promise<User[]> {
-    console.log('context -> ', context);
     return this.usersService.getUsers();
   }
 

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/ios/mobile.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/ios/mobile.xcodeproj/project.pbxproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,10 @@
       <workItem from="1584956993293" duration="66000" />
       <workItem from="1585077285596" duration="527000" />
       <workItem from="1585134026223" duration="24000" />
-      <workItem from="1585172922047" duration="13124000" />
+      <workItem from="1585172922047" duration="13581000" />
+      <workItem from="1585220564018" duration="27000" />
+      <workItem from="1585267285601" duration="5631000" />
+      <workItem from="1585406320429" duration="3722000" />
     </task>
     <servers />
   </component>
@@ -76,6 +78,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="362" y="12" key="CommitChangelistDialog2" timestamp="1585410423889">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="362" y="12" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1585410423889" />
     <state x="0" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1584761537551">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -84,13 +90,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="243" y="122" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1584889178651" />
+    <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1585412522573">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="539" y="272" width="650" height="506" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585412522573" />
     <state width="600" height="440" key="javadoc.popup" timestamp="1584810486265">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585186260190">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585268961296">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585186260190" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585268961296" />
   </component>
 </project>

@@ -1,8 +1,10 @@
-import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Context, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Session } from './models/session.entity';
 import { SessionService } from './session.service';
 import { LoginInput } from './dto/login.input';
 import { User } from '../users/models/user.entity';
+import { ExecutionContext, Req } from '@nestjs/common';
+import { Response } from 'express';
 
 @Resolver(of => Session)
 export class SessionResolver {
@@ -15,6 +17,7 @@ export class SessionResolver {
 
   @Mutation(returns => Session)
   async login(@Args('loginInput') loginInput: LoginInput): Promise<Session> {
-    return this.sessionService.login(loginInput);
+    const session = await this.sessionService.login(loginInput);
+    return session;
   }
 }

@@ -15,6 +15,7 @@ import { PostsModule } from './posts/posts.module';
     TypeOrmModule.forRoot(),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.graphql',
+      context: ({ req }) => ({ req }),
     }),
   ],
   controllers: [AppController],
