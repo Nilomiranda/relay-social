@@ -7,5 +7,5 @@ export const CurrentUser = createParamDecorator(
   (data: unknown, context: ExecutionContext) => {
     const ctx = context[2];
     return ctx.req.user.user;
-  }
+  },
 );

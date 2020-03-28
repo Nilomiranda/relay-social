@@ -22,11 +22,18 @@ interface Node {
   id: ID!
 }
 
+input PageArgs {
+  first: Float
+  last: Float
+  after: Float
+  before: Float
+}
+
 type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String!
-  endCursor: String!
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
 }
 
 type Post implements Node {
@@ -54,7 +61,7 @@ type PostsConnection {
 type Query {
   users: [User!]!
   user(id: Float!): User!
-  posts: PostsConnection!
+  posts(userId: Float, pagination: PageArgs): PostsConnection!
   post(id: Float!): Post!
   validateSession(token: String!): User!
 }
@@ -74,7 +81,6 @@ type User implements Node {
   updatedDate: DateTime!
   name: String!
   email: String!
-  posts: PostsConnection!
 }
 
 input UserInput {

@@ -1,4 +1,11 @@
-import { Args, Context, GqlExecutionContext, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Context,
+  GqlExecutionContext,
+  Mutation,
+  Query,
+  Resolver,
+} from '@nestjs/graphql';
 import { Session } from './models/session.entity';
 import { SessionService } from './session.service';
 import { LoginInput } from './dto/login.input';

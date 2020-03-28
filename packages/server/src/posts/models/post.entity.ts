@@ -13,7 +13,7 @@ export class Post extends BaseEntity<Post> {
   content: string;
 
   @IsNotEmpty({ always: true })
-  @Field(type => User,{ nullable: false })
+  @Field(type => User, { nullable: false })
   @ManyToOne(type => User)
   user: User;
 }

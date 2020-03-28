@@ -1,4 +1,12 @@
-import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Context,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { User } from './models/user.entity';
 import { UsersService } from './users.service';
 import { UserInput } from './dto/user.input';
@@ -29,19 +37,24 @@ export class UsersResolver {
     return this.usersService.createNewUser(newUserData);
   }
 
-  @ResolveField(returns => PostsConnection)
-  async posts(@Parent() user: User) {
-    const { id } = user;
-    const posts = await this.postsService.repo.find({ where: { user: { id, } } })
-
-    const postEdges = posts.map(post => new PostEdge({
-      node: post,
-      cursor: post.id,
-    }));
-
-    return {
-      edges: postEdges,
-      pageInfo: new PageInfo(),
-    }
-  }
+  // @ResolveField(returns => PostsConnection)
+  // async posts(@Parent() user: User) {
+  //   const { id } = user;
+  //   const posts = await this.postsService.repo.find({
+  //     where: { user: { id } },
+  //   });
+  //
+  //   const postEdges = posts.map(
+  //     post =>
+  //       new PostEdge({
+  //         node: post,
+  //         cursor: post.id,
+  //       }),
+  //   );
+  //
+  //   return {
+  //     edges: postEdges,
+  //     pageInfo: new PageInfo(),
+  //   };
+  // }
 }

@@ -5,7 +5,7 @@ import { PostEdge } from './post.edge';
 
 @ObjectType()
 export class PostsConnection {
-  @Field(type => [PostEdge],{ nullable: false })
+  @Field(type => [PostEdge], { nullable: false })
   edges: PostEdge[];
 
   @Field(type => PageInfo)

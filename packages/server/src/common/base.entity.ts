@@ -1,4 +1,10 @@
-import { Field, ID, InterfaceType, ObjectType, } from '@nestjs/graphql';
+import {
+  Field,
+  ID,
+  InputType,
+  InterfaceType,
+  ObjectType,
+} from '@nestjs/graphql';
 import {
   CreateDateColumn,
   DeepPartial,
@@ -15,43 +21,47 @@ export abstract class Node {
   id: string;
 }
 
-// @ObjectType()
-// export class Edge<T> {
-//   constructor(obj?: { cursor?: string; node?: T }) {
-//     this.cursor = obj.cursor;
-//     this.node = obj.node;
-//   }
-//
-//   @Field({ nullable: false })
-//   @IsString()
-//   cursor: string;
-//
-//   /**
-//    * Generics won't work here cause I need
-//    * to explicitly specify what will be returned
-//    * Can't what I proposed below
-//    */
-//   @Field(type => Object, { nullable: false })
-//   node: T;
-// }
+@InputType()
+export class PageArgs {
+  @Field({ nullable: true })
+  first: number;
+
+  @Field({ nullable: true })
+  last: number;
+
+  @Field({ nullable: true })
+  after: number;
+
+  @Field({ nullable: true })
+  before: number;
+}
 
 @ObjectType()
 export class PageInfo {
-  @Field({ nullable: false })
+  constructor(props?: any) {
+    Object.assign(this, props);
+  }
+
+  @Field({ nullable: true })
   @IsBoolean()
-  hasNextPage: boolean;
+  hasNextPage?: boolean;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   @IsBoolean()
-  hasPreviousPage: boolean;
+  hasPreviousPage?: boolean;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   @IsString()
-  startCursor: string;
+  startCursor?: string;
 
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   @IsString()
-  endCursor: string;
+  endCursor?: string;
+}
+
+export interface PaginationResponse<T> {
+  data: T[];
+  pageInfo: PageInfo;
 }
 
 @ObjectType({

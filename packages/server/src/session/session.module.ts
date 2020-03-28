@@ -19,7 +19,7 @@ import { JwtStrategy } from '../common/auth/jwt.strategy';
       secret: authConfig.secret,
       signOptions: { expiresIn: '60s' },
     }),
-    TypeOrmModule.forFeature([Session, User])
+    TypeOrmModule.forFeature([Session, User]),
   ],
 })
 export class SessionModule {}
