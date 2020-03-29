@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button, Text, View } from 'react-native';
@@ -9,6 +9,14 @@ import Feed from './pages/Feed';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createStackNavigator();
+
+function SuspenseFeed() {
+  return (
+    <Suspense fallback={<Text>Loading posts...</Text>}>
+      <Feed />
+    </Suspense>
+  )
+}
 
 function Routes() {
   // const [token, setToken] = useState('');
@@ -38,7 +46,7 @@ function Routes() {
       <Stack.Navigator initialRouteName={initialRouteName}>
         <Stack.Screen name="SignIn" component={SignIn}/>
         <Stack.Screen name="SignUp" component={SignUp}/>
-        <Stack.Screen name="Feed" component={Feed}/>
+        <Stack.Screen name="Feed" component={SuspenseFeed}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

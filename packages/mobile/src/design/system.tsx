@@ -35,4 +35,5 @@ export const ErrorText = styled.Text`
 export const DarkMainContainer = styled.SafeAreaView`
   background: ${colors.darkBlue};
   flex: 1;
+  align-items: center;
 `

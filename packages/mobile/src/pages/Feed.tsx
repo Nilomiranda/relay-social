@@ -1,21 +1,38 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, ScrollView, Text } from 'react-native';
-import FeedPost from '../components/FeedPost';
+import React, { useEffect, Suspense } from 'react';
+import FeedPostList from '../components/FeedPostList';
 
 import { DarkMainContainer } from '../design/system';
+import { graphql, preloadQuery, usePreloadedQuery, useRelayEnvironment } from 'react-relay/hooks';
 
 function Feed(): JSX.Element {
+  const environment = useRelayEnvironment();
+
+  const postsQuery = graphql`
+    query FeedQuery {
+        posts {
+            ...FeedPostList_posts
+        }
+    }
+  `
+
+  const result = preloadQuery(
+    environment,
+    postsQuery,
+    {},
+    { fetchPolicy: 'store-or-network' }
+  )
+
+  const posts = usePreloadedQuery(postsQuery, result);
+
   return (
-    <DarkMainContainer>
-      <ScrollView>
-        <FeedPost/>
-        <FeedPost/>
-        <FeedPost/>
-        <FeedPost/>
-        <FeedPost/>
-        <FeedPost/>
-      </ScrollView>
-    </DarkMainContainer>
+    <Suspense fallback={"Loading posts..."}>
+      <DarkMainContainer>
+        {
+          posts ? (<FeedPostList posts={posts} />) : null
+        }
+      </DarkMainContainer>
+    </Suspense>
+
   )
 }
 
