@@ -2,7 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, Text, TextInput, View, Alert } from 'react-native';
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import login from '../mutations/SignIn';
+import login, { LoginResponse } from '../mutations/SignIn';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // design system
 import { AppText, colors, ErrorText } from '../design/system';
@@ -83,13 +84,19 @@ function SignIn() {
     login(environment, { email, password }, handleSessionCreation, handleErrors)
   }
 
-  function handleSessionCreation() {
+  async function handleSessionCreation(res: LoginResponse) {
     setLoginError('');
-    console.log('SESSION CREATED');
+    const { token } = res.login;
+    await AsyncStorage.setItem('FOTO_TOKEN', token);
+    navigateToFeed();
   }
 
   function handleErrors() {
     setLoginError('Invalid credentials');
+  }
+
+  function navigateToFeed() {
+    navigation.navigate('Feed');
   }
 
   return (

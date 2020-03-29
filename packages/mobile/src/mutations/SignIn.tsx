@@ -6,6 +6,16 @@ export interface LoginInput {
   password: string;
 }
 
+export interface LoginResponse {
+  login: {
+    token: string;
+    user: {
+      email: string;
+      name: string;
+    }
+  }
+}
+
 const signInMutation = graphql`
     mutation SignInMutation (
         $input: LoginInput!
@@ -20,16 +30,14 @@ const signInMutation = graphql`
     }
 `
 
-function login(environment: any, input: LoginInput, onComplete: () => void, onError: () => void) {
+function login(environment: any, input: LoginInput, onComplete: (res: any) => void, onError: () => void) {
   commitMutation(
     environment,
     {
       mutation: signInMutation,
       variables: { input },
       onCompleted: (res, err) => {
-        console.log('login success -> ', res);
-        console.log('login error -> ', err);
-        onComplete();
+        onComplete(res);
       },
       onError: err => {
         console.log('request errors -> ', err);

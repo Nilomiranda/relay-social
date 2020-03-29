@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/SignIn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +19,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="GraphQL File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -70,7 +75,8 @@
       <workItem from="1585172922047" duration="13581000" />
       <workItem from="1585220564018" duration="27000" />
       <workItem from="1585267285601" duration="5631000" />
-      <workItem from="1585406320429" duration="18062000" />
+      <workItem from="1585406320429" duration="18291000" />
+      <workItem from="1585497359184" duration="5805000" />
     </task>
     <servers />
   </component>
@@ -98,9 +104,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585424125228">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585498628090">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585424125228" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585498628090" />
   </component>
 </project>

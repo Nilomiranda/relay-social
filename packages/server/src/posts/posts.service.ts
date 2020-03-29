@@ -105,10 +105,4 @@ export class PostsService {
   async createNewPost(post: Post): Promise<Post> {
     return this.repo.save(post);
   }
-
-  determinePaginationInfo(totalCount: number, data: { first?: number; after?: number; last?: number; before?: number }) {
-    const { first, after, last, before } = data;
-
-
-  }
 }

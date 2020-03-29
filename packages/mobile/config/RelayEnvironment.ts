@@ -5,16 +5,19 @@ import {
   Store,
 } from 'relay-runtime';
 import Reactotron from 'reactotron-react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // @ts-ignore
-function fetchQuery(
+async function fetchQuery(
   operation: any,
   variables: any,
 ) {
+  const token = await AsyncStorage.getItem('FOTO_TOKEN');
   return fetch('http://localhost:3000/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : '',
     },
     body: JSON.stringify({
       query: operation.text,
