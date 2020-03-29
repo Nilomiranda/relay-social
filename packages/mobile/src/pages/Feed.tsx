@@ -1,13 +1,21 @@
 import React, { useEffect } from 'react';
-import { Text } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import { SafeAreaView, ScrollView, Text } from 'react-native';
+import FeedPost from '../components/FeedPost';
+
+import { DarkMainContainer } from '../design/system';
 
 function Feed(): JSX.Element {
-  // useEffect(() => {
-  //   AsyncStorage.clear();
-  // }, [])
   return (
-    <Text>Hi from feed</Text>
+    <DarkMainContainer>
+      <ScrollView>
+        <FeedPost/>
+        <FeedPost/>
+        <FeedPost/>
+        <FeedPost/>
+        <FeedPost/>
+        <FeedPost/>
+      </ScrollView>
+    </DarkMainContainer>
   )
 }
 

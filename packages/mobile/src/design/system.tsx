@@ -31,3 +31,8 @@ export const ErrorText = styled.Text`
   color: ${colors.red};
   margin: 10px 0;
 `
+
+export const DarkMainContainer = styled.SafeAreaView`
+  background: ${colors.darkBlue};
+  flex: 1;
+`
