@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { colors } from '../design/system';
+import { Avatar, colors } from '../design/system';
 import { Image, Text } from 'react-native';
 import { graphql, useFragment } from 'react-relay/hooks';
 import { format } from 'date-fns';
+import { useNavigation } from '@react-navigation/native';
 
 const MainContainer = styled.View`
   background: ${colors.darkBlue};
@@ -13,12 +14,6 @@ const MainContainer = styled.View`
   margin-top: 20px;
   border-bottom-width: 1px;
   border-bottom-color: ${colors.gray};
-`
-
-const Avatar = styled.Image`
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
 `
 
 const PostWrapper = styled.View`
@@ -53,13 +48,14 @@ const PostText = styled.Text`
 `;
 
 function FeedPost({ post }: { post: any }) {
+  const navigation = useNavigation();
 
   return (
     <MainContainer>
       <Avatar source={{ uri: 'https://res.cloudinary.com/nilomiranda/image/upload/v1585511552/avatar_dpjfur.png' }} />
       <PostWrapper>
         <PostHeader>
-          <PostAuthor>{post.user.name}</PostAuthor>
+          <PostAuthor onPress={() => navigation.navigate('NewPostModal')}>{post.user.name}</PostAuthor>
           <PostDate>{format(new Date(post.createdDate), 'MMM dd, yyyy')}</PostDate>
         </PostHeader>
         <PostContent>

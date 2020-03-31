@@ -35,5 +35,10 @@ export const ErrorText = styled.Text`
 export const DarkMainContainer = styled.SafeAreaView`
   background: ${colors.darkBlue};
   flex: 1;
-  align-items: center;
+`
+
+export const Avatar = styled.Image`
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 `

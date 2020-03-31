@@ -1,12 +1,13 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button, Text, View } from 'react-native';
+import { Alert, Button, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Feed from './pages/Feed';
 import AsyncStorage from '@react-native-community/async-storage';
+import NewPostModal from './Modals/NewPost';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,18 @@ function SuspenseFeed() {
     <Suspense fallback={<Text>Loading posts...</Text>}>
       <Feed />
     </Suspense>
+  )
+}
+
+const ModalStack = createStackNavigator();
+
+function MainStack({ initialRouteName }: { initialRouteName: string }) {
+  return (
+    <Stack.Navigator initialRouteName={initialRouteName}>
+      <Stack.Screen name="SignIn" component={SignIn}/>
+      <Stack.Screen name="SignUp" component={SignUp}/>
+      <Stack.Screen name="Feed" component={SuspenseFeed}/>
+    </Stack.Navigator>
   )
 }
 
@@ -43,11 +56,20 @@ function Routes() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRouteName}>
-        <Stack.Screen name="SignIn" component={SignIn}/>
-        <Stack.Screen name="SignUp" component={SignUp}/>
-        <Stack.Screen name="Feed" component={SuspenseFeed}/>
-      </Stack.Navigator>
+      <ModalStack.Navigator mode="modal" initialRouteName="main">
+        <ModalStack.Screen name="main" options={{ headerShown: false }}>
+          { props => <MainStack initialRouteName={initialRouteName} /> }
+        </ModalStack.Screen>
+        <ModalStack.Screen
+          name="NewPostModal"
+          component={NewPostModal}
+          options={({ navigation }) => (
+            {
+              headerTitle: props => (<Text { ...props } />)
+            }
+          )}
+        />
+      </ModalStack.Navigator>
     </NavigationContainer>
   )
 }
