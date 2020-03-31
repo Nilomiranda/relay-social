@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +75,8 @@
       <workItem from="1585562886219" duration="27000" />
       <workItem from="1585601621547" duration="8611000" />
       <workItem from="1585650240760" duration="149000" />
-      <workItem from="1585665580540" duration="629000" />
+      <workItem from="1585665580540" duration="843000" />
+      <workItem from="1585692579134" duration="1571000" />
     </task>
     <servers />
   </component>
@@ -92,10 +92,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="0" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1680.1050@0.0.1680.1050" timestamp="1584761537551" />
-    <state x="243" y="122" key="SettingsEditor" timestamp="1584889178651">
+    <state x="243" y="122" key="SettingsEditor" timestamp="1585692905868">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="243" y="122" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1584889178651" />
+    <state x="243" y="122" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1585692905868" />
     <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1585412522573">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -104,9 +104,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585609498896">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585693349034">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585609498896" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585693349034" />
   </component>
 </project>

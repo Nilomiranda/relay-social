@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  NotFoundException,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Session, SessionStatus } from './models/session.entity';
@@ -43,6 +39,7 @@ export class SessionService {
 
     if (previousSession) {
       previousSession.token = token;
+      previousSession.status = SessionStatus.VALID;
       return this.repo.save(previousSession);
     } else {
       return this.repo.save(session);
@@ -59,6 +56,14 @@ export class SessionService {
       throw new NotFoundException('Invalid session', 'INVALID_SESSION');
     }
 
+    try {
+      jwt.verify(token, auth().secret, { ignoreExpiration: false });
+    } catch (err) {
+      session.status = SessionStatus.EXPIRED;
+      await this.repo.save(new Session(session));
+      throw new InternalServerErrorException('Expired token', 'TOKEN_EXPIRED');
+    }
+
     return session.user;
   }
 
@@ -68,7 +73,7 @@ export class SessionService {
   }
 
   async generateToken(user: User): Promise<string> {
-    const token = jwt.sign({ data: user }, auth.secret);
+    const token = jwt.sign({ data: user }, auth().secret, { expiresIn: '7d' });
     return token;
   }
 }

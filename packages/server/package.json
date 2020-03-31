@@ -32,6 +32,7 @@
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
+    "@nestjs/config": "^0.4.0",
     "@nestjs/graphql": "^7.0.10",
     "@nestjs/jwt": "^7.0.0",
     "@nestjs/passport": "^7.0.0",
