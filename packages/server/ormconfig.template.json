@@ -1,0 +1,10 @@
+{
+  "type": "",
+  "host": "",
+  "port": 3306,
+  "username": "",
+  "password": "",
+  "database": "",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}

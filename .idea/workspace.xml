@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +74,9 @@
       <workItem from="1585406320429" duration="18291000" />
       <workItem from="1585497359184" duration="13970000" />
       <workItem from="1585562886219" duration="27000" />
-      <workItem from="1585601621547" duration="8347000" />
+      <workItem from="1585601621547" duration="8611000" />
+      <workItem from="1585650240760" duration="149000" />
+      <workItem from="1585665580540" duration="181000" />
     </task>
     <servers />
   </component>
