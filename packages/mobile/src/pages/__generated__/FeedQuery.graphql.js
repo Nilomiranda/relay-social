@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a59018bef96ca88d3b3004c1e6499d07
+ * @relayHash 16a912ce751f6a037cd2fa1f2aa53394
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type FeedPostList_posts$ref = any;
-export type FeedQueryVariables = {||};
+export type FeedQueryVariables = {|
+  first?: ?number
+|};
 export type FeedQueryResponse = {|
-  +posts: {|
-    +$fragmentRefs: FeedPostList_posts$ref
-  |}
+  +$fragmentRefs: FeedPostList_posts$ref
 |};
 export type FeedQuery = {|
   variables: FeedQueryVariables,
@@ -24,29 +24,52 @@ export type FeedQuery = {|
 
 
 /*
-query FeedQuery {
-  posts {
-    ...FeedPostList_posts
-  }
+query FeedQuery(
+  $first: Float
+) {
+  ...FeedPostList_posts_3ASum4
 }
 
-fragment FeedPostList_posts on PostsConnection {
-  edges {
-    node {
-      user {
-        name
+fragment FeedPostList_posts_3ASum4 on Query {
+  posts(first: $first) {
+    edges {
+      node {
+        user {
+          name
+          id
+        }
+        content
+        createdDate
         id
+        __typename
       }
-      content
-      createdDate
-      id
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }
 */
 
 const node/*: ConcreteRequest*/ = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "first",
+    "type": "Float",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -60,37 +83,26 @@ return {
     "name": "FeedQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "posts",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "PostsConnection",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "FeedPostList_posts",
-            "args": null
-          }
-        ]
+        "kind": "FragmentSpread",
+        "name": "FeedPostList_posts",
+        "args": (v1/*: any*/)
       }
     ]
   },
   "operation": {
     "kind": "Operation",
     "name": "FeedQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "posts",
         "storageKey": null,
-        "args": null,
+        "args": (v1/*: any*/),
         "concreteType": "PostsConnection",
         "plural": false,
         "selections": [
@@ -128,7 +140,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      (v0/*: any*/)
+                      (v2/*: any*/)
                     ]
                   },
                   {
@@ -145,12 +157,60 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v0/*: any*/)
+                  (v2/*: any*/),
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "__typename",
+                    "args": null,
+                    "storageKey": null
+                  }
                 ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "cursor",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "pageInfo",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "PageInfo",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "endCursor",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "hasNextPage",
+                "args": null,
+                "storageKey": null
               }
             ]
           }
         ]
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": null,
+        "name": "posts",
+        "args": (v1/*: any*/),
+        "handle": "connection",
+        "key": "Feed_posts",
+        "filters": null
       }
     ]
   },
@@ -158,12 +218,12 @@ return {
     "operationKind": "query",
     "name": "FeedQuery",
     "id": null,
-    "text": "query FeedQuery {\n  posts {\n    ...FeedPostList_posts\n  }\n}\n\nfragment FeedPostList_posts on PostsConnection {\n  edges {\n    node {\n      user {\n        name\n        id\n      }\n      content\n      createdDate\n      id\n    }\n  }\n}\n",
+    "text": "query FeedQuery(\n  $first: Float\n) {\n  ...FeedPostList_posts_3ASum4\n}\n\nfragment FeedPostList_posts_3ASum4 on Query {\n  posts(first: $first) {\n    edges {\n      node {\n        user {\n          name\n          id\n        }\n        content\n        createdDate\n        id\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '8529b4940e02178d5733886b3475b84b';
+(node/*: any*/).hash = '2a5056531093b3c90703409267417c7d';
 
 module.exports = node;

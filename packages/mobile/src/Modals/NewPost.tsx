@@ -4,11 +4,15 @@ import { DarkMainContainer } from '../design/system';
 import TextArea from '../components/TextArea';
 import { Button as DialogButton, Paragraph, Dialog, Portal  } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
+import createNewPost from '../mutations/NewPost';
+import { useRelayEnvironment } from 'react-relay/hooks';
+import { ROOT_ID } from 'relay-runtime';
 
 function NewPostModal({ navigation }: { navigation: any }) {
   const [buttonEnabled, setButtonEnabled] = useState(false);
   const [content, setContent] = useState('');
   const [exitDialogVisible, setExitDialogVisible] = useState(false);
+  const environment = useRelayEnvironment();
 
   useEffect(() => {
     AsyncStorage.getItem('POST_DRAFT').then(content => {
@@ -63,9 +67,15 @@ function NewPostModal({ navigation }: { navigation: any }) {
   function publishNewPost() {
     // clear draft
     AsyncStorage.setItem('POST_DRAFT', '');
-    Alert.alert('Published');
+
+    createNewPost(environment, content, handlePostPublished, ROOT_ID);
+
     setExitDialogVisible(false);
     navigation.goBack();
+  }
+
+  function handlePostPublished() {
+    Alert.alert('Post published!!!');
   }
 
   return (

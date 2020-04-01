@@ -7,6 +7,10 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Edge {
+  edge: PostEdge!
+}
+
 input LoginInput {
   email: String!
   password: String!
@@ -14,7 +18,7 @@ input LoginInput {
 
 type Mutation {
   addUser(newUserData: UserInput!): User!
-  newPost(newPostData: PostInput!): Post!
+  newPost(newPostData: PostInput!): Edge!
   login(loginInput: LoginInput!): Session!
 }
 
@@ -61,7 +65,7 @@ type PostsConnection {
 type Query {
   users: [User!]!
   user(id: Float!): User!
-  posts(userId: Float, pagination: PageArgs): PostsConnection!
+  posts(userId: Float, before: Float, last: Float, after: Float, first: Float, pagination: PageArgs): PostsConnection!
   post(id: Float!): Post!
   validateSession(token: String!): User!
 }

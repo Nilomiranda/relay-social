@@ -66,18 +66,20 @@ export class PostsService {
       } else if (pagination.last && pagination.after) {
         order = 'ASC';
       } else if (pagination.first && !pagination.after && !pagination.before) {
-        order = 'ASC';
-      } else if (pagination.last && !pagination.after && !pagination.before) {
         order = 'DESC';
+      } else if (pagination.last && !pagination.after && !pagination.before) {
+        order = 'ASC';
       }
     }
+
+    console.log('posts will be order by ->', order);
 
     const res = await this.repo.findAndCount({
       where,
       relations: ['user'],
       take: pagination?.first || pagination?.last || 100000000000,
       order: {
-        id: order,
+        id: order || 'DESC',
       }
     });
 

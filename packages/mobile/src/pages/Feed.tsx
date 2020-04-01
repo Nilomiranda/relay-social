@@ -17,17 +17,15 @@ function Feed(): JSX.Element {
   const navigation = useNavigation();
 
   const postsQuery = graphql`
-    query FeedQuery {
-        posts {
-            ...FeedPostList_posts
-        }
+    query FeedQuery($first: Float) {
+        ...FeedPostList_posts @arguments(first: $first)
     }
   `
 
   const result = preloadQuery(
     environment,
     postsQuery,
-    {},
+    { first: 5000 },
     { fetchPolicy: 'store-or-network' }
   )
 

@@ -6,6 +6,7 @@ import {
 } from 'relay-runtime';
 import Reactotron from 'reactotron-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+const { installRelayDevTools } = require('relay-devtools');
 
 // @ts-ignore
 async function fetchQuery(
@@ -32,6 +33,8 @@ async function fetchQuery(
     return parsedResponse;
   })
 }
+
+installRelayDevTools();
 
 const environment = new Environment({
   network: Network.create(fetchQuery),
