@@ -1,4 +1,4 @@
-import { Args, Field, Float, Mutation, ObjectType, Query, Resolver } from '@nestjs/graphql';
+import { Args, Field, Float, ID, Mutation, ObjectType, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { PostsService } from './posts.service';
 import { Post } from './models/post.entity';
 import { PostsConnection } from './models/posts.connection';
@@ -10,29 +10,25 @@ import { NotFoundException, UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../common/guards/auth.guard';
 import { CurrentUser } from '../common/decorators';
 import { ObjectTypeDefinitionFactory } from '@nestjs/graphql/dist/schema-builder/factories/object-type-definition.factory';
-
-@ObjectType()
-class Edge {
-  @Field(type => PostEdge)
-  edge: PostEdge;
-}
+import { PostPayload } from './models/post.payload';
+import { fromGlobalId, toGlobalId } from 'graphql-relay';
 
 @Resolver(of => Post)
 export class PostsResolver {
   constructor(private readonly postsService: PostsService) {}
 
   @UseGuards(GqlAuthGuard)
-  @Mutation(type => Edge)
+  @Mutation(type => PostPayload)
   async newPost(
     @Args('newPostData') newPostData: PostInput,
     @CurrentUser() user: User,
-  ): Promise<{ edge: PostEdge }> {
+  ): Promise<PostPayload> {
     const post = new Post({ content: newPostData.content, user });
     const createdPost = await this.postsService.createNewPost(post);
 
     return {
-      edge: new PostEdge({
-        cursor: createdPost.id,
+      post: new PostEdge({
+        cursor: toGlobalId(post.constructor.name, createdPost.id),
         node: createdPost,
       }),
     }
@@ -79,7 +75,8 @@ export class PostsResolver {
 
   @UseGuards(GqlAuthGuard)
   @Query(returns => Post)
-  async post(@Args('id') id: number) {
+  async post(@Args('id') id: string) {
+    id = fromGlobalId(id).id
     const post = await this.postsService.repo.findOne(id, {
       relations: ['user'],
     });
@@ -89,5 +86,13 @@ export class PostsResolver {
     } else {
       return post;
     }
+  }
+
+  @ResolveField(returns => ID)
+  async id(@Parent() parent: Post) {
+    const type = parent.constructor.name;
+    console.log('type -> ', type);
+    const { id } = parent;
+    return toGlobalId(type, id);
   }
 }

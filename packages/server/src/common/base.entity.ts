@@ -1,19 +1,22 @@
 import {
-  Field,
-  ID,
+  Field, GraphQLFactory,
+  ID, Info,
   InputType,
   InterfaceType,
-  ObjectType,
+  ObjectType, Parent, ResolveField, ResolveProperty, Resolver, Root,
 } from '@nestjs/graphql';
 import {
+  AfterInsert, AfterLoad,
+  BeforeInsert,
+  Column,
   CreateDateColumn,
   DeepPartial,
-  Entity,
+  Entity, EntityManager, getManager, PrimaryColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { IsBoolean, IsDate, IsInt, IsString } from 'class-validator';
-import { ObjectTypeDefinitionFactory } from '@nestjs/graphql/dist/schema-builder/factories/object-type-definition.factory';
+import { toGlobalId } from 'graphql-relay';
 
 @InterfaceType()
 export abstract class Node {
@@ -86,4 +89,14 @@ export class BaseEntity<T = {}> {
   @Field()
   @UpdateDateColumn()
   updatedDate?: Date;
+
+  // @AfterLoad()
+  // async generateGlobalID(this) {
+  //   console.log('this -> ', this);
+  //   const type = this.constructor.name;
+  //   const { id } = this;
+  //   const globalId = toGlobalId(type, id);
+  //   console.log('globalId -> ', globalId);
+  //   this.id = globalId;
+  // }
 }

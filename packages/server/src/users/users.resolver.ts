@@ -1,6 +1,6 @@
 import {
   Args,
-  Context,
+  Context, ID,
   Mutation,
   Parent,
   Query,
@@ -14,6 +14,7 @@ import { PostsConnection } from '../posts/models/posts.connection';
 import { PostsService } from '../posts/posts.service';
 import { PostEdge } from '../posts/models/post.edge';
 import { PageInfo } from '../common/base.entity';
+import { toGlobalId } from 'graphql-relay';
 
 @Resolver(of => User)
 export class UsersResolver {
@@ -28,7 +29,7 @@ export class UsersResolver {
   }
 
   @Query(returns => User)
-  user(@Args('id') id: number): Promise<User> {
+  user(@Args('id') id: string): Promise<User> {
     return this.usersService.getUser(id);
   }
 
@@ -37,24 +38,10 @@ export class UsersResolver {
     return this.usersService.createNewUser(newUserData);
   }
 
-  // @ResolveField(returns => PostsConnection)
-  // async posts(@Parent() user: User) {
-  //   const { id } = user;
-  //   const posts = await this.postsService.repo.find({
-  //     where: { user: { id } },
-  //   });
-  //
-  //   const postEdges = posts.map(
-  //     post =>
-  //       new PostEdge({
-  //         node: post,
-  //         cursor: post.id,
-  //       }),
-  //   );
-  //
-  //   return {
-  //     edges: postEdges,
-  //     pageInfo: new PageInfo(),
-  //   };
-  // }
+  @ResolveField(returns => ID)
+  async id(@Parent() parent: User) {
+    const type = parent.constructor.name;
+    const { id } = parent;
+    return toGlobalId(type, id);
+  }
 }

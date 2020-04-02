@@ -4,6 +4,7 @@ import { User } from './models/user.entity';
 import { Repository } from 'typeorm';
 import { UserInput } from './dto/user.input';
 import * as bcrypt from 'bcrypt';
+import { fromGlobalId } from 'graphql-relay';
 
 @Injectable()
 export class UsersService {
@@ -13,7 +14,9 @@ export class UsersService {
     return this.repo.find();
   }
 
-  async getUser(id: number) {
+  async getUser(id: string) {
+    console.log('fromGlobalId(id) -> ', fromGlobalId(id));
+    id = fromGlobalId(id).id
     return this.repo.findOne(id);
   }
 
