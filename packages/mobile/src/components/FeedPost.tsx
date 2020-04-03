@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Avatar, colors } from '../design/system';
-import { Image, Text } from 'react-native';
-import { graphql, useFragment } from 'react-relay/hooks';
+import { Image, Text, TouchableWithoutFeedback } from 'react-native';
+import { graphql, preloadQuery, useFragment, usePreloadedQuery, useRelayEnvironment } from 'react-relay/hooks';
 import { format } from 'date-fns';
 import { useNavigation } from '@react-navigation/native';
 
@@ -49,20 +49,42 @@ const PostText = styled.Text`
 
 function FeedPost({ post }: { post: any }) {
   const navigation = useNavigation();
+  const environment = useRelayEnvironment();
+
+   const postQuery = graphql`
+    query FeedPostQuery($id: String!) {
+        post(id: $id) {
+            ...PostDetail_post
+        }
+    }
+   `
+
+  function handlePostClick(postId: number) {
+    const result = preloadQuery(
+      environment,
+      postQuery,
+      { id: postId },
+      { fetchPolicy: 'store-or-network' }
+    )
+
+    navigation.navigate('PostDetailModal', { result, query: postQuery });
+  }
 
   return (
-    <MainContainer>
-      <Avatar source={{ uri: 'https://res.cloudinary.com/nilomiranda/image/upload/v1585511552/avatar_dpjfur.png' }} />
-      <PostWrapper>
-        <PostHeader>
-          <PostAuthor onPress={() => navigation.navigate('NewPostModal')}>{post.user.name}</PostAuthor>
-          <PostDate>{format(new Date(post.createdDate), 'MMM dd, yyyy')}</PostDate>
-        </PostHeader>
-        <PostContent>
-          <PostText>{post.content}</PostText>
-        </PostContent>
-      </PostWrapper>
-    </MainContainer>
+    <TouchableWithoutFeedback onPress={() => { handlePostClick(post.id) }}>
+      <MainContainer>
+        <Avatar source={{ uri: 'https://res.cloudinary.com/nilomiranda/image/upload/v1585511552/avatar_dpjfur.png' }} />
+        <PostWrapper>
+          <PostHeader>
+            <PostAuthor>{post.user.name}</PostAuthor>
+            <PostDate>{format(new Date(post.createdDate), 'MMM dd, yyyy')}</PostDate>
+          </PostHeader>
+          <PostContent>
+            <PostText>{post.content}</PostText>
+          </PostContent>
+        </PostWrapper>
+      </MainContainer>
+    </TouchableWithoutFeedback>
   )
 }
 

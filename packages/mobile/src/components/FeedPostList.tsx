@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import FeedPost from './FeedPost';
 import { graphql, useFragment } from 'react-relay/hooks';
+import { AppText, colors } from '../design/system';
 
 function FeedPostList(props: any) {
 
@@ -33,10 +34,14 @@ function FeedPostList(props: any) {
 
   console.log('data ->', data);
 
+  if (data?.posts.edges.length === 0) {
+    return <AppText color={colors.white} textAlign='center'>No posts to show 😢</AppText>
+  }
+
   return (
     <ScrollView>
       {
-        data?.posts.edges.map(edge => (
+        data?.posts.edges.map((edge: any) => (
           <FeedPost post={edge.node} key={edge.node.id}/>
         ))
       }

@@ -6,6 +6,7 @@ import {
 } from 'relay-runtime';
 import Reactotron from 'reactotron-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { handleErrors } from '../src/helpers/handleErrors';
 const { installRelayDevTools } = require('relay-devtools');
 
 // @ts-ignore
@@ -26,7 +27,11 @@ async function fetchQuery(
     }),
   }).then(async response => {
     const parsedResponse = await response.json();
-
+    console.log('parsedResponse -> ', parsedResponse);
+    // const errors = parsedResponse.errors;
+    // const [ error ] = errors;
+    // @TODO -> Finish handleError function
+    // handleErrors(error);
     // if (parsedResponse.errors) {
     //   return parsedResponse.errors;
     // }

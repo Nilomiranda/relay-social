@@ -84,17 +84,17 @@ export class PostsService {
     });
 
     const posts = res[0];
-    if (posts.length === 0) {
-      throw new NotFoundException(
-        `No posts for user with id ${userId}`,
-        'NO_POSTS_FOUND',
-      );
-    }
-    const lastCursor = posts[posts.length - 1].id;
-    const firstCursor = posts[0].id;
+    // if (posts.length === 0) {
+    //   throw new NotFoundException(
+    //     `No posts for user with id ${userId}`,
+    //     'NO_POSTS_FOUND',
+    //   );
+    // }
+    const lastCursor = posts[posts.length - 1]?.id || null;
+    const firstCursor = posts[0]?.id || null;
 
     return {
-      data: posts,
+      data: posts || [],
       pageInfo: {
         hasNextPage: res[1] > pagination.first,
         endCursor: lastCursor,

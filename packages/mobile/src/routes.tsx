@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import Feed from './pages/Feed';
 import AsyncStorage from '@react-native-community/async-storage';
 import NewPostModal from './Modals/NewPost';
+import PostDetailModal from './Modals/PostDetailModal';
 
 const Stack = createStackNavigator();
 
@@ -69,6 +70,20 @@ function Routes() {
             }
           )}
         />
+        <ModalStack.Screen
+          name="PostDetailModal"
+          options={({ navigation }) => (
+            {
+              headerTitle: props => (<Text { ...props } />)
+            }
+          )}
+        >
+          { props => (
+            <Suspense fallback={<Text>Loading post</Text>}>
+              <PostDetailModal { ...props } />
+            </Suspense>
+          ) }
+        </ModalStack.Screen>
       </ModalStack.Navigator>
     </NavigationContainer>
   )

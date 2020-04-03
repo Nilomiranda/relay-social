@@ -5,6 +5,7 @@ import { FAB } from 'react-native-paper';
 import { DarkMainContainer } from '../design/system';
 import { graphql, preloadQuery, usePreloadedQuery, useRelayEnvironment } from 'react-relay/hooks';
 import { useNavigation } from '@react-navigation/native';
+import { Text } from 'react-native';
 
 const NewPostFAB = styled(FAB)`
   position: absolute;
@@ -28,6 +29,7 @@ function Feed(): JSX.Element {
     { first: 5000 },
     { fetchPolicy: 'store-or-network' }
   )
+
 
   const posts = usePreloadedQuery(postsQuery, result);
 

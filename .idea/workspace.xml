@@ -4,13 +4,13 @@
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/Modals/NewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/Modals/NewPost.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPostList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostList_posts.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostList_posts.graphql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/NewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/NewPost.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/NewPostMutation.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/NewPostMutation.graphql.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/__generated__/FeedQuery.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/__generated__/FeedQuery.graphql.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,11 @@
       <workItem from="1585601621547" duration="8611000" />
       <workItem from="1585650240760" duration="149000" />
       <workItem from="1585665580540" duration="843000" />
-      <workItem from="1585692579134" duration="12176000" />
+      <workItem from="1585692579134" duration="12376000" />
+      <workItem from="1585736047387" duration="33000" />
+      <workItem from="1585776539525" duration="10261000" />
+      <workItem from="1585789413950" duration="532000" />
+      <workItem from="1585865891700" duration="9518000" />
     </task>
     <servers />
   </component>
@@ -112,9 +116,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585705193013">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585875878613">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585705193013" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585875878613" />
   </component>
 </project>

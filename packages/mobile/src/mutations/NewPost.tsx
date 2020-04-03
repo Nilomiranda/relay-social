@@ -4,7 +4,7 @@ import { RangeAddConfig } from 'relay-runtime/lib/mutations/RelayDeclarativeMuta
 const newPostMutation = graphql`
     mutation  NewPostMutation ($content: String!) {
         newPost(newPostData: { content: $content }) {
-            edge {
+            post {
                 node {
                     user {
                         name
@@ -30,7 +30,7 @@ function createNewPost(environment: any, content: string, onComplete: () => void
         rangeBehavior: 'prepend',
       },
     ],
-    edgeName: 'edge',
+    edgeName: 'post',
   };
 
   commitMutation(

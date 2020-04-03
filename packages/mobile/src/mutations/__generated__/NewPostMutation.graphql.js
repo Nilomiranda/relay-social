@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0e84273661df7507ff21cd38aef3bfbf
+ * @relayHash 7b41ef518bbd84228b57e385cadfbd8b
  */
 
 /* eslint-disable */
@@ -14,7 +14,7 @@ export type NewPostMutationVariables = {|
 |};
 export type NewPostMutationResponse = {|
   +newPost: {|
-    +edge: {|
+    +post: {|
       +node: {|
         +user: {|
           +name: string
@@ -38,7 +38,7 @@ mutation NewPostMutation(
   $content: String!
 ) {
   newPost(newPostData: {content: $content}) {
-    edge {
+    post {
       node {
         user {
           name
@@ -118,13 +118,13 @@ return {
         "name": "newPost",
         "storageKey": null,
         "args": (v1/*: any*/),
-        "concreteType": "Edge",
+        "concreteType": "PostPayload",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "edge",
+            "name": "post",
             "storageKey": null,
             "args": null,
             "concreteType": "PostEdge",
@@ -173,13 +173,13 @@ return {
         "name": "newPost",
         "storageKey": null,
         "args": (v1/*: any*/),
-        "concreteType": "Edge",
+        "concreteType": "PostPayload",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "edge",
+            "name": "post",
             "storageKey": null,
             "args": null,
             "concreteType": "PostEdge",
@@ -222,12 +222,12 @@ return {
     "operationKind": "mutation",
     "name": "NewPostMutation",
     "id": null,
-    "text": "mutation NewPostMutation(\n  $content: String!\n) {\n  newPost(newPostData: {content: $content}) {\n    edge {\n      node {\n        user {\n          name\n          id\n        }\n        content\n        createdDate\n        id\n      }\n    }\n  }\n}\n",
+    "text": "mutation NewPostMutation(\n  $content: String!\n) {\n  newPost(newPostData: {content: $content}) {\n    post {\n      node {\n        user {\n          name\n          id\n        }\n        content\n        createdDate\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '0728d3168fd101c7e0baed07b74c4d0c';
+(node/*: any*/).hash = '93a9f5a0502c8040db179ee8174bd454';
 
 module.exports = node;
