@@ -12,6 +12,7 @@ import { CurrentUser } from '../common/decorators';
 import { ObjectTypeDefinitionFactory } from '@nestjs/graphql/dist/schema-builder/factories/object-type-definition.factory';
 import { PostPayload } from './models/post.payload';
 import { fromGlobalId, toGlobalId } from 'graphql-relay';
+import { CommentsConnection } from '../comments/model/comments.connection';
 
 @Resolver(of => Post)
 export class PostsResolver {

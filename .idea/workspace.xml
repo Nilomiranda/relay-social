@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/config/RelayEnvironment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPostList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/NewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/NewPost.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/NewPostMutation.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/mutations/__generated__/NewPostMutation.graphql.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/pages/Feed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +14,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="GraphQL File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -88,7 +80,10 @@
       <workItem from="1585736047387" duration="33000" />
       <workItem from="1585776539525" duration="10261000" />
       <workItem from="1585789413950" duration="532000" />
-      <workItem from="1585865891700" duration="9518000" />
+      <workItem from="1585865891700" duration="9808000" />
+      <workItem from="1585908319357" duration="28000" />
+      <workItem from="1585950475193" duration="951000" />
+      <workItem from="1586016201268" duration="6930000" />
     </task>
     <servers />
   </component>
@@ -108,17 +103,25 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="243" y="122" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1585692905868" />
-    <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1585412522573">
+    <state x="100" y="100" width="1480" height="850" key="dock-window-1" timestamp="1586026435684">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="539" y="272" width="650" height="506" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585412522573" />
+    <state x="100" y="100" width="1480" height="850" key="dock-window-1/0.0.1680.1050@0.0.1680.1050" timestamp="1586026435684" />
+    <state x="100" y="100" width="1480" height="850" key="dock-window-2" timestamp="1586026435684">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="100" y="100" width="1480" height="850" key="dock-window-2/0.0.1680.1050@0.0.1680.1050" timestamp="1586026435684" />
+    <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1586027259631">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="539" y="272" width="650" height="506" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586027259631" />
     <state width="600" height="440" key="javadoc.popup" timestamp="1584810486265">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1585875878613">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586031928697">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1585875878613" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586031928697" />
   </component>
 </project>

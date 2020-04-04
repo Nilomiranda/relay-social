@@ -4,6 +4,8 @@ import { FindConditions, FindOneOptions, LessThan, MoreThan, Repository } from '
 import { Post } from './models/post.entity';
 import { PostsConnection } from './models/posts.connection';
 import { PageInfo, PaginationResponse } from '../common/base.entity';
+import { CommentEdge } from '../comments/model/comment.edge';
+import { Comment } from '../comments/model/comment.entity';
 
 @Injectable()
 export class PostsService {
@@ -76,22 +78,21 @@ export class PostsService {
 
     const res = await this.repo.findAndCount({
       where,
-      relations: ['user'],
+      relations: ['user', 'comments'],
       take: pagination?.first || pagination?.last || 100000000000,
       order: {
         id: order || 'DESC',
       }
     });
 
-    const posts = res[0];
-    // if (posts.length === 0) {
-    //   throw new NotFoundException(
-    //     `No posts for user with id ${userId}`,
-    //     'NO_POSTS_FOUND',
-    //   );
-    // }
+    let posts = res[0];
+
+    posts = this.convertCommentsToCommentsConnection(posts);
+
     const lastCursor = posts[posts.length - 1]?.id || null;
     const firstCursor = posts[0]?.id || null;
+
+    console.log('posts found -> ', posts);
 
     return {
       data: posts || [],
@@ -106,5 +107,23 @@ export class PostsService {
 
   async createNewPost(post: Post): Promise<Post> {
     return this.repo.save(post);
+  }
+
+  convertCommentsToCommentsConnection(posts: Post[]) {
+    posts.forEach(post => {
+      const commentEdges = (post.comments as Comment[]).map(comment => {
+        return new CommentEdge({
+          node: comment,
+          cursor: comment.id,
+        })
+      });
+
+      post.comments = {
+        edges: commentEdges,
+        pageInfo: new PageInfo(),
+      }
+    });
+
+    return posts;
   }
 }

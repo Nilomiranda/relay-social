@@ -2,6 +2,32 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Comment implements Node {
+  id: ID!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+  content: String!
+}
+
+type CommentEdge {
+  cursor: String!
+  node: Comment!
+}
+
+input CommentInput {
+  content: String!
+  postId: String!
+}
+
+type CommentPayload {
+  comment: CommentEdge!
+}
+
+type CommentsConnection {
+  edges: [CommentEdge!]!
+  pageInfo: PageInfo!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -16,6 +42,7 @@ type Mutation {
   addUser(newUserData: UserInput!): User!
   newPost(newPostData: PostInput!): PostPayload!
   login(loginInput: LoginInput!): Session!
+  postNewComment(commentInput: CommentInput!): CommentPayload!
 }
 
 interface Node {
@@ -42,6 +69,7 @@ type Post implements Node {
   updatedDate: DateTime!
   content: String!
   user: User!
+  comments: CommentsConnection!
 }
 
 type PostEdge {
@@ -68,6 +96,7 @@ type Query {
   posts(userId: Float, before: Float, last: Float, after: Float, first: Float, pagination: PageArgs): PostsConnection!
   post(id: String!): Post!
   validateSession(token: String!): User!
+  comments: CommentsConnection!
 }
 
 type Session implements Node {
