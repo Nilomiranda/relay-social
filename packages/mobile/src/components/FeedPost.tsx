@@ -5,6 +5,7 @@ import { Image, Text, TouchableWithoutFeedback } from 'react-native';
 import { graphql, preloadQuery, useFragment, usePreloadedQuery, useRelayEnvironment } from 'react-relay/hooks';
 import { format } from 'date-fns';
 import { useNavigation } from '@react-navigation/native';
+import Comment from '../assets/icons/comment.svg';
 
 const MainContainer = styled.View`
   background: ${colors.darkBlue};

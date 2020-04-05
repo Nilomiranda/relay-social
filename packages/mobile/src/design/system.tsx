@@ -20,14 +20,15 @@ export const colors = {
 
 // common components
 interface TextProps {
-  color: string;
-  textAlign: string;
+  color?: string;
+  textAlign?: string;
+  margin?: string;
 }
 
 export const AppText = styled.Text<TextProps>`
   color: ${({ color }) => color || colors.black};
   text-align: ${({ textAlign }) => textAlign || 'left'};
-  margin: 10px 0;
+  margin: ${({ margin }) => margin || '10px 0'};
 `
 
 export const ErrorText = styled.Text`

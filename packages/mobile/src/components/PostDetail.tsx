@@ -1,9 +1,12 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { graphql, useFragment } from 'react-relay/hooks';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, Modal, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import { Avatar, colors } from '../design/system';
+import { AppText, Avatar, colors } from '../design/system';
 import { format } from 'date-fns';
+import CommentIcon from '../assets/icons/comment.svg';
+import CommentModal from '../Modals/CommentModal';
+// import { Portal, Modal } from 'react-native-paper';
 
 const MainContainer = styled.ScrollView`
   background: ${colors.darkBlue}
@@ -34,7 +37,30 @@ const PostContent = styled.Text`
   margin-top: 40px;
 `;
 
+const PostInteractionBar = styled.View`
+  margin: 20px 0;
+  padding: 0 20px;
+  flex-direction: row;
+  justify-content: flex-end;
+`
+
+const Comment = styled(CommentIcon)`
+  align-self: flex-end;
+`
+
+const CommentWrapper = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 30px;
+  border-style: dashed;
+  border-color: ${colors.lighter};
+  border-width: 2px;
+`
+
 function PostDetail({ post }) {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const data = useFragment(
     graphql`
         fragment PostDetail_post on Post {
@@ -48,6 +74,10 @@ function PostDetail({ post }) {
     , post.post
   )
 
+  function openCommentModal() {
+    setModalVisible(true);
+  }
+
   return (
     <MainContainer>
       <PostHeader>
@@ -58,6 +88,19 @@ function PostDetail({ post }) {
         </View>
       </PostHeader>
       <PostContent>{data.content}</PostContent>
+      <PostInteractionBar>
+        <CommentWrapper onPress={() => openCommentModal()}>
+          <Comment width={20} height={20} fill={colors.white}/>
+          <AppText color={colors.white} margin={'0 0 0 7px'}>Comment</AppText>
+        </CommentWrapper>
+      </PostInteractionBar>
+
+      {
+        modalVisible ?
+          <CommentModal visible={true}/> : <CommentModal visible={false}/>
+      }
+
+
     </MainContainer>
   )
 }
