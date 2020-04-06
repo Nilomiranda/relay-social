@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { AppText, colors } from '../design/system';
@@ -52,17 +52,26 @@ export interface CommentModalProps {
   setModalVisible: () => void;
 }
 
-function CommentModal ({ visible }) {
+function CommentModal ({ visible }: { visible: boolean }) {
   const [modalVisible, setModalVisible] = useState(visible);
+
+  /**
+   * As visible is being changed by a parent component
+   * (where the modal is inserted) we make sure to update
+   * its current state to show or hide the modal
+   */
+  useEffect(() => {
+    setModalVisible(visible);
+  }, [visible])
 
   return (
     <CommentModalWrapper visible={modalVisible} transparent={true} animationType='slide'>
       <CommentModalContent>
         <CommentTextArea placeholder="Write your comments..." multiline={true} placeholderTextColor={colors.gray}/>
         <CommentButtonsWrapper>
-          <CancelButton title="Cancel" onPress={() => {}} />
+          <CancelButton title="Cancel" onPress={() => { setModalVisible(false) }} />
           <PostButton>
-            <AppText color={colors.white} margin="0" onPress={() => { setModalVisible(false) }}>Post</AppText>
+            <AppText color={colors.white} margin="0" onPress={() => {  }}>Post</AppText>
           </PostButton>
         </CommentButtonsWrapper>
       </CommentModalContent>

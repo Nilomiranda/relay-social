@@ -95,10 +95,7 @@ function PostDetail({ post }) {
         </CommentWrapper>
       </PostInteractionBar>
 
-      {
-        modalVisible ?
-          <CommentModal visible={true}/> : <CommentModal visible={false}/>
-      }
+      <CommentModal visible={modalVisible} />
 
 
     </MainContainer>

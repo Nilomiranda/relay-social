@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/metro.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/FeedPost.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/Modals/CommentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/Modals/CommentModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/design/system.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,9 @@
       <workItem from="1585908319357" duration="28000" />
       <workItem from="1585950475193" duration="951000" />
       <workItem from="1586016201268" duration="7547000" />
-      <workItem from="1586100144891" duration="9431000" />
+      <workItem from="1586100144891" duration="9531000" />
+      <workItem from="1586167555276" duration="95000" />
+      <workItem from="1586211800743" duration="1018000" />
     </task>
     <servers />
   </component>
