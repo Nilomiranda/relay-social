@@ -6,6 +6,7 @@ import { AppText, Avatar, colors } from '../design/system';
 import { format } from 'date-fns';
 import CommentIcon from '../assets/icons/comment.svg';
 import CommentModal from '../Modals/CommentModal';
+import CommentsList from './CommentsList';
 // import { Portal, Modal } from 'react-native-paper';
 
 const MainContainer = styled.ScrollView`
@@ -97,7 +98,7 @@ function PostDetail({ post }) {
 
       <CommentModal visible={modalVisible} />
 
-
+      <CommentsList />
     </MainContainer>
   )
 }

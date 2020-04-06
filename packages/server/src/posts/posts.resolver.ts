@@ -77,10 +77,12 @@ export class PostsResolver {
   @UseGuards(GqlAuthGuard)
   @Query(returns => Post)
   async post(@Args('id') id: string) {
-    id = fromGlobalId(id).id
-    const post = await this.postsService.repo.findOne(id, {
-      relations: ['user'],
-    });
+    // id = fromGlobalId(id).id
+    // const post = await this.postsService.repo.findOne(id, {
+    //   relations: ['user'],
+    // });
+
+    const post = await this.postsService.getOnePost(id);
 
     if (!post) {
       throw new NotFoundException('Post not found', 'POST_NOT_FOUND');

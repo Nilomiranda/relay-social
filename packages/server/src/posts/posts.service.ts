@@ -6,6 +6,7 @@ import { PostsConnection } from './models/posts.connection';
 import { PageInfo, PaginationResponse } from '../common/base.entity';
 import { CommentEdge } from '../comments/model/comment.edge';
 import { Comment } from '../comments/model/comment.entity';
+import { fromGlobalId } from 'graphql-relay';
 
 @Injectable()
 export class PostsService {
@@ -103,6 +104,17 @@ export class PostsService {
         hasPreviousPage: !(!!pagination?.first)
       },
     };
+  }
+
+  async getOnePost(postId: string) {
+    const id = fromGlobalId(postId).id
+    const post = await this.repo.findOne(id, {
+      relations: ['user', 'comments'],
+    });
+
+    const postWithCommentsConnection = this.convertCommentsToCommentsConnection([post]);
+
+    return postWithCommentsConnection[0];
   }
 
   async createNewPost(post: Post): Promise<Post> {
