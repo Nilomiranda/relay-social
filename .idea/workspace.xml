@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/Comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostQuery.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostQuery.graphql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/PostDetail_post.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/PostDetail_post.graphql.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +91,7 @@
       <workItem from="1586016201268" duration="7547000" />
       <workItem from="1586100144891" duration="9531000" />
       <workItem from="1586167555276" duration="95000" />
-      <workItem from="1586211800743" duration="3262000" />
+      <workItem from="1586211800743" duration="4626000" />
     </task>
     <servers />
   </component>
@@ -123,9 +127,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586214852685">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586215568899">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586214852685" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586215568899" />
   </component>
 </project>

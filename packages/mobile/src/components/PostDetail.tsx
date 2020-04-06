@@ -70,6 +70,9 @@ function PostDetail({ post }) {
             user {
                 name
             }
+            comments {
+                ...CommentsList_comments
+            }
         }
     `
     , post.post
@@ -98,7 +101,7 @@ function PostDetail({ post }) {
 
       <CommentModal visible={modalVisible} />
 
-      <CommentsList />
+      <CommentsList comments={data.comments}/>
     </MainContainer>
   )
 }

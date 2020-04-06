@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Avatar, colors } from '../design/system';
+import { format } from "date-fns";
 
 const MainContainer = styled.View`
   border-bottom-width: 2px;
@@ -39,23 +40,18 @@ const CommentContent = styled.Text`
   font-size: 16px;
 `;
 
-function Comment() {
+function Comment({ comment }) {
   return (
     <MainContainer>
       <CommentHeader>
         <Avatar source={{ uri: 'https://res.cloudinary.com/nilomiranda/image/upload/v1585511552/avatar_dpjfur.png' }} />
         <CommentHeaderInfo>
           <CommentAuthor>Danilo Miranda says:</CommentAuthor>
-          <CommentDate>April 6th, 2020</CommentDate>
+          <CommentDate>{format(new Date(comment.node.createdDate), 'MMMM dd, yyyy')}</CommentDate>
         </CommentHeaderInfo>
       </CommentHeader>
       <CommentContentContainer>
-        <CommentContent>
-          Man, I have to say, this is the best comment I've ever seen in my entire life.
-          No really, and come to think of it... with such a greatly created app like this one
-          we are using, the least we can do is leave a great comment (like this one) in all
-          posts!! This APP ROCKSS!!!! 🚀🚀🚀🚀
-        </CommentContent>
+        <CommentContent>{ comment.node.content }</CommentContent>
       </CommentContentContainer>
     </MainContainer>
   )
