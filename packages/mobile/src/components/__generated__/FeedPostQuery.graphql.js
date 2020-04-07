@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 470f4826fa2e23f44240d9bd6867c610
+ * @relayHash 6b799605053b0b7dbf74e304a5f23eb0
  */
 
 /* eslint-disable */
@@ -41,6 +41,10 @@ fragment CommentsList_comments on CommentsConnection {
       id
       content
       createdDate
+      user {
+        name
+        id
+      }
     }
     cursor
   }
@@ -95,6 +99,25 @@ v4 = {
   "name": "id",
   "args": null,
   "storageKey": null
+},
+v5 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "user",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "User",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    (v4/*: any*/)
+  ]
 };
 return {
   "kind": "Request",
@@ -139,25 +162,7 @@ return {
         "selections": [
           (v2/*: any*/),
           (v3/*: any*/),
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "user",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "User",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
-              (v4/*: any*/)
-            ]
-          },
+          (v5/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -187,7 +192,8 @@ return {
                     "selections": [
                       (v4/*: any*/),
                       (v2/*: any*/),
-                      (v3/*: any*/)
+                      (v3/*: any*/),
+                      (v5/*: any*/)
                     ]
                   },
                   {
@@ -210,7 +216,7 @@ return {
     "operationKind": "query",
     "name": "FeedPostQuery",
     "id": null,
-    "text": "query FeedPostQuery(\n  $id: String!\n) {\n  post(id: $id) {\n    ...PostDetail_post\n    id\n  }\n}\n\nfragment CommentsList_comments on CommentsConnection {\n  edges {\n    node {\n      id\n      content\n      createdDate\n    }\n    cursor\n  }\n}\n\nfragment PostDetail_post on Post {\n  content\n  createdDate\n  user {\n    name\n    id\n  }\n  comments {\n    ...CommentsList_comments\n  }\n}\n",
+    "text": "query FeedPostQuery(\n  $id: String!\n) {\n  post(id: $id) {\n    ...PostDetail_post\n    id\n  }\n}\n\nfragment CommentsList_comments on CommentsConnection {\n  edges {\n    node {\n      id\n      content\n      createdDate\n      user {\n        name\n        id\n      }\n    }\n    cursor\n  }\n}\n\nfragment PostDetail_post on Post {\n  content\n  createdDate\n  user {\n    name\n    id\n  }\n  comments {\n    ...CommentsList_comments\n  }\n}\n",
     "metadata": {}
   }
 };

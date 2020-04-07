@@ -17,6 +17,9 @@ export type CommentsList_comments = {|
       +id: string,
       +content: string,
       +createdDate: any,
+      +user: {|
+        +name: string
+      |},
     |},
     +cursor: string,
   |}>,
@@ -76,6 +79,24 @@ const node/*: ReaderFragment*/ = {
               "name": "createdDate",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "user",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "User",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "name",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
             }
           ]
         },
@@ -91,6 +112,6 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '605515bd1f8971b4d10ae97579253ff8';
+(node/*: any*/).hash = '7ad8ab7c8b798da8d35e7e399f51149a';
 
 module.exports = node;

@@ -46,7 +46,7 @@ function Comment({ comment }) {
       <CommentHeader>
         <Avatar source={{ uri: 'https://res.cloudinary.com/nilomiranda/image/upload/v1585511552/avatar_dpjfur.png' }} />
         <CommentHeaderInfo>
-          <CommentAuthor>Danilo Miranda says:</CommentAuthor>
+          <CommentAuthor>{comment.node.user.name} says:</CommentAuthor>
           <CommentDate>{format(new Date(comment.node.createdDate), 'MMMM dd, yyyy')}</CommentDate>
         </CommentHeaderInfo>
       </CommentHeader>

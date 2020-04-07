@@ -18,6 +18,9 @@ function CommentsList({ comments }) {
                     id
                     content
                     createdDate
+                    user {
+                        name
+                    }
                 }
                 cursor
             }

@@ -37,7 +37,7 @@ export class CommentsService {
 
   async getUserFromPost(commentId: string): Promise<User> {
     // const commentIdAsNumber = fromGlobalId(commentId).id;
-
+    console.log('let us resolve user from comment');
     const { user } = await this.repo.findOne({
       where: {
         id: commentId,
