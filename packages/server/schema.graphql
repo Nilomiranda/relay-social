@@ -7,6 +7,7 @@ type Comment implements Node {
   createdDate: DateTime!
   updatedDate: DateTime!
   content: String!
+  user: User!
 }
 
 type CommentEdge {

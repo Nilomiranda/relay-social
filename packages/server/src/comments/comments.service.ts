@@ -12,6 +12,7 @@ export class CommentsService {
   constructor(
     @InjectRepository(Comment) public repo: Repository<Comment>,
     @InjectRepository(Post) public postRepo: Repository<Post>,
+    @InjectRepository(User) public userRepo: Repository<User>,
   ) {
   }
 
@@ -32,5 +33,18 @@ export class CommentsService {
     })
 
     return this.repo.save(comment);
+  }
+
+  async getUserFromPost(commentId: string): Promise<User> {
+    // const commentIdAsNumber = fromGlobalId(commentId).id;
+
+    const { user } = await this.repo.findOne({
+      where: {
+        id: commentId,
+      },
+      relations: ['user'],
+    });
+
+    return user;
   }
 }

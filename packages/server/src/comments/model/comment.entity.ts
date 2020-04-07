@@ -14,6 +14,7 @@ export class Comment extends BaseEntity<Comment> {
   @Column({ nullable: false, type: 'text' })
   content: string;
 
+  @Field(type => User)
   @ManyToOne(type => User, { nullable: false })
   user: User
 

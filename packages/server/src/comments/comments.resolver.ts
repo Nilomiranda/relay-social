@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { Comment } from './model/comment.entity';
 import { CommentsService } from './comments.service';
 import { CommentsConnection } from './model/comments.connection';
@@ -49,5 +49,10 @@ export class CommentsResolver {
         node: createComment,
       }),
     }
+  }
+
+  @ResolveField(returns => User)
+  async user(@Parent() parent: Comment) {
+    return this.service.getUserFromPost(parent.id);
   }
 }
