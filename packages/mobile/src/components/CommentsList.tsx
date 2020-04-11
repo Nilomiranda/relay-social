@@ -4,31 +4,36 @@ import { View } from 'react-native';
 import styled from 'styled-components/native';
 import { graphql, useFragment } from 'react-relay/hooks';
 import { AppText, colors } from '../design/system';
+import Reactotron from 'reactotron-react-native';
 
 const MainContainer = styled.View`
   margin-top: 40px;
 `;
 
-function CommentsList({ comments }) {
+function CommentsList(props) {
   const data = useFragment(
     graphql`
-        fragment CommentsList_comments on CommentsConnection {
-            edges {
-                node {
-                    id
-                    content
-                    createdDate
-                    user {
-                        name
+        fragment CommentsList_comments on Post 
+        @argumentDefinitions(first: { type: "Float", defaultValue: 10 }) {
+            comments (first: $first) @connection(key: "Post_comments") {
+                edges {
+                    node {
+                        id
+                        content
+                        createdDate
+                        user {
+                            name
+                        }
                     }
+                    cursor
                 }
-                cursor
             }
         }
-    `, comments
+    `, props.comments
   )
 
-  if (data.edges.length === 0) {
+
+  if (data?.comments.edges.length === 0) {
     return (
       <MainContainer>
         <AppText color={colors.white}>This post has no comments 😢</AppText>
@@ -39,7 +44,7 @@ function CommentsList({ comments }) {
   return (
     <MainContainer>
       {
-        data?.edges.map((edge: any) => (<Comment comment={edge} key={edge.id}/>))
+        data?.comments.edges.map((edge: any) => (<Comment comment={edge} key={edge.node.id}/>))
       }
     </MainContainer>
   )

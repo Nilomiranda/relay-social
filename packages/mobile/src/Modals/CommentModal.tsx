@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { AppText, colors } from '../design/system';
-
+import createNewComment from '../mutations/NewComment';
+import { useRelayEnvironment } from 'react-relay/hooks';
+import { ROOT_ID } from 'relay-runtime';
 
 const CommentModalWrapper = styled.Modal`
   opacity: 0.9;
@@ -52,9 +54,10 @@ export interface CommentModalProps {
   setModalVisible: () => void;
 }
 
-function CommentModal ({ visible }: { visible: boolean }) {
+function CommentModal ({ visible, postId }: { visible: boolean, postId: string }) {
   const [modalVisible, setModalVisible] = useState(visible);
-
+  const [commentContent, setCommentContent] = useState('');
+  const environment = useRelayEnvironment();
   /**
    * As visible is being changed by a parent component
    * (where the modal is inserted) we make sure to update
@@ -64,14 +67,27 @@ function CommentModal ({ visible }: { visible: boolean }) {
     setModalVisible(visible);
   }, [visible])
 
+  function handleNewCommentSubmit() {
+    createNewComment(environment, { content: commentContent, postId: postId }, handleCommentPosted, ROOT_ID);
+  }
+
+  function handleCommentPosted() {
+    setModalVisible(false);
+  }
+
   return (
     <CommentModalWrapper visible={modalVisible} transparent={true} animationType='slide'>
       <CommentModalContent>
-        <CommentTextArea placeholder="Write your comments..." multiline={true} placeholderTextColor={colors.gray}/>
+        <CommentTextArea
+          placeholder="Write your comments..."
+          multiline={true}
+          placeholderTextColor={colors.gray}
+          onChangeText={text => setCommentContent(text)}
+        />
         <CommentButtonsWrapper>
           <CancelButton title="Cancel" onPress={() => { setModalVisible(false) }} />
           <PostButton>
-            <AppText color={colors.white} margin="0" onPress={() => {  }}>Post</AppText>
+            <AppText color={colors.white} margin="0" onPress={() => { handleNewCommentSubmit() }}>Post</AppText>
           </PostButton>
         </CommentButtonsWrapper>
       </CommentModalContent>

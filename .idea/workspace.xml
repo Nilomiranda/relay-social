@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/Modals/CommentModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/Modals/CommentModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/PostDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/CommentsList_comments.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/CommentsList_comments.graphql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostQuery.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/FeedPostQuery.graphql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/PostDetail_post.graphql.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/__generated__/PostDetail_post.graphql.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +98,8 @@
       <workItem from="1586299244412" duration="2036000" />
       <workItem from="1586307250941" duration="63000" />
       <workItem from="1586539139345" duration="4760000" />
-      <workItem from="1586554370522" duration="4865000" />
+      <workItem from="1586554370522" duration="4955000" />
+      <workItem from="1586623920412" duration="9952000" />
     </task>
     <servers />
   </component>
@@ -120,17 +127,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="100" y="100" width="1480" height="850" key="dock-window-2/0.0.1680.1050@0.0.1680.1050" timestamp="1586026435684" />
-    <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1586027259631">
+    <state x="539" y="272" width="650" height="506" key="find.popup" timestamp="1586628544217">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="539" y="272" width="650" height="506" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586027259631" />
+    <state x="539" y="272" width="650" height="506" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586628544217" />
     <state width="600" height="440" key="javadoc.popup" timestamp="1584810486265">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586563142580">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586636023099">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586563142580" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586636023099" />
   </component>
 </project>

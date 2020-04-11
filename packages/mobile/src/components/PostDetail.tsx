@@ -7,6 +7,7 @@ import { format } from 'date-fns';
 import CommentIcon from '../assets/icons/comment.svg';
 import CommentModal from '../Modals/CommentModal';
 import CommentsList from './CommentsList';
+import Reactotron from 'reactotron-react-native';
 // import { Portal, Modal } from 'react-native-paper';
 
 const MainContainer = styled.ScrollView`
@@ -65,14 +66,13 @@ function PostDetail({ post }) {
   const data = useFragment(
     graphql`
         fragment PostDetail_post on Post {
+            id
             content
             createdDate
             user {
                 name
             }
-            comments {
-                ...CommentsList_comments
-            }
+            ...CommentsList_comments
         }
     `
     , post.post
@@ -99,9 +99,11 @@ function PostDetail({ post }) {
         </CommentWrapper>
       </PostInteractionBar>
 
-      <CommentModal visible={modalVisible} />
+      <CommentModal visible={modalVisible} postId={data.id}/>
 
-      <CommentsList comments={data.comments}/>
+      {
+        data ? <CommentsList comments={data} /> : null
+      }
     </MainContainer>
   )
 }

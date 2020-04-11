@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6b799605053b0b7dbf74e304a5f23eb0
+ * @relayHash 16dd1fd672478ffeed6116c0ecf86bc9
  */
 
 /* eslint-disable */
@@ -35,31 +35,37 @@ query FeedPostQuery(
   }
 }
 
-fragment CommentsList_comments on CommentsConnection {
-  edges {
-    node {
-      id
-      content
-      createdDate
-      user {
-        name
+fragment CommentsList_comments on Post {
+  comments(first: 10) {
+    edges {
+      node {
         id
+        content
+        createdDate
+        user {
+          name
+          id
+        }
+        __typename
       }
+      cursor
     }
-    cursor
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }
 
 fragment PostDetail_post on Post {
+  id
   content
   createdDate
   user {
     name
     id
   }
-  comments {
-    ...CommentsList_comments
-  }
+  ...CommentsList_comments
 }
 */
 
@@ -82,21 +88,21 @@ v1 = [
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "content",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "createdDate",
+  "name": "content",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "createdDate",
   "args": null,
   "storageKey": null
 },
@@ -116,9 +122,16 @@ v5 = {
       "args": null,
       "storageKey": null
     },
-    (v4/*: any*/)
+    (v2/*: any*/)
   ]
-};
+},
+v6 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 10
+  }
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -162,13 +175,14 @@ return {
         "selections": [
           (v2/*: any*/),
           (v3/*: any*/),
+          (v4/*: any*/),
           (v5/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
             "name": "comments",
-            "storageKey": null,
-            "args": null,
+            "storageKey": "comments(first:10)",
+            "args": (v6/*: any*/),
             "concreteType": "CommentsConnection",
             "plural": false,
             "selections": [
@@ -190,10 +204,17 @@ return {
                     "concreteType": "Comment",
                     "plural": false,
                     "selections": [
-                      (v4/*: any*/),
                       (v2/*: any*/),
                       (v3/*: any*/),
-                      (v5/*: any*/)
+                      (v4/*: any*/),
+                      (v5/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "__typename",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   },
                   {
@@ -204,10 +225,43 @@ return {
                     "storageKey": null
                   }
                 ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "pageInfo",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "endCursor",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "hasNextPage",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
               }
             ]
           },
-          (v4/*: any*/)
+          {
+            "kind": "LinkedHandle",
+            "alias": null,
+            "name": "comments",
+            "args": (v6/*: any*/),
+            "handle": "connection",
+            "key": "Post_comments",
+            "filters": null
+          }
         ]
       }
     ]
@@ -216,7 +270,7 @@ return {
     "operationKind": "query",
     "name": "FeedPostQuery",
     "id": null,
-    "text": "query FeedPostQuery(\n  $id: String!\n) {\n  post(id: $id) {\n    ...PostDetail_post\n    id\n  }\n}\n\nfragment CommentsList_comments on CommentsConnection {\n  edges {\n    node {\n      id\n      content\n      createdDate\n      user {\n        name\n        id\n      }\n    }\n    cursor\n  }\n}\n\nfragment PostDetail_post on Post {\n  content\n  createdDate\n  user {\n    name\n    id\n  }\n  comments {\n    ...CommentsList_comments\n  }\n}\n",
+    "text": "query FeedPostQuery(\n  $id: String!\n) {\n  post(id: $id) {\n    ...PostDetail_post\n    id\n  }\n}\n\nfragment CommentsList_comments on Post {\n  comments(first: 10) {\n    edges {\n      node {\n        id\n        content\n        createdDate\n        user {\n          name\n          id\n        }\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment PostDetail_post on Post {\n  id\n  content\n  createdDate\n  user {\n    name\n    id\n  }\n  ...CommentsList_comments\n}\n",
     "metadata": {}
   }
 };

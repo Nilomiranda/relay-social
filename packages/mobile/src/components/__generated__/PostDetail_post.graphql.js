@@ -13,14 +13,13 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type PostDetail_post$ref: FragmentReference;
 declare export opaque type PostDetail_post$fragmentType: PostDetail_post$ref;
 export type PostDetail_post = {|
+  +id: string,
   +content: string,
   +createdDate: any,
   +user: {|
     +name: string
   |},
-  +comments: {|
-    +$fragmentRefs: CommentsList_comments$ref
-  |},
+  +$fragmentRefs: CommentsList_comments$ref,
   +$refType: PostDetail_post$ref,
 |};
 export type PostDetail_post$data = PostDetail_post;
@@ -39,6 +38,13 @@ const node/*: ReaderFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -72,24 +78,13 @@ const node/*: ReaderFragment*/ = {
       ]
     },
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "comments",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommentsConnection",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "CommentsList_comments",
-          "args": null
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "CommentsList_comments",
+      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'aab8acf544264ad2d00257235bb8d2a2';
+(node/*: any*/).hash = 'c2b138f6e564d76cbf69afc216120a97';
 
 module.exports = node;
