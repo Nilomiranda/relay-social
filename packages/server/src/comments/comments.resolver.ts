@@ -1,26 +1,39 @@
-import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Float, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { Comment } from './model/comment.entity';
 import { CommentsService } from './comments.service';
 import { CommentsConnection } from './model/comments.connection';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../common/guards/auth.guard';
 import { CommentEdge } from './model/comment.edge';
-import { PageInfo } from '../common/base.entity';
+import { PageInfo, PaginationResponse } from '../common/base.entity';
 import { CommentPayload } from './model/comment.payload';
 import { CommentInput } from './dto/comment.input';
 import { CurrentUser } from '../common/decorators';
 import { User } from '../users/models/user.entity';
 import { PostEdge } from '../posts/models/post.edge';
 import { toGlobalId } from 'graphql-relay';
+import { Post } from '../posts/models/post.entity';
 
 @Resolver(of => Comment)
 export class CommentsResolver {
-  constructor(private readonly service: CommentsService) {}
+  constructor(private readonly service?: CommentsService) {}
 
   @UseGuards(GqlAuthGuard)
   @Query(returns => CommentsConnection)
-  async comments(): Promise<CommentsConnection> {
-    const comments = await this.service.repo.find();
+  async comments(
+    @Args({ name: 'first', nullable: true, type: () => Float }) first?: number,
+    @Args({ name: 'after', nullable: true, type: () => String }) after?: string,
+    @Args({ name: 'last', nullable: true, type: () => Float }) last?: number,
+    @Args({ name: 'before', nullable: true, type: () => String }) before?: string,
+    @Args({ name: 'order', nullable: true, type: () => String }) order?: 'ASC' | 'DESC',
+  ): Promise<CommentsConnection> {
+    console.log('COMMENTS RESOLVER HANDLED');
+
+    const res: PaginationResponse<Comment> = await this.service.getComments({
+      pagination: { first, after, last, before, order },
+    });
+
+    const { data: comments } = res;
 
     const commentsEdge = comments.map(comment => new CommentEdge({
       node: comment,
@@ -29,7 +42,7 @@ export class CommentsResolver {
 
     return {
       edges: commentsEdge,
-      pageInfo: new PageInfo(),
+      pageInfo: new PageInfo(res.pageInfo),
     }
   }
 

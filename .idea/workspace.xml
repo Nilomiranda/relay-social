@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8128e9d9-238a-482f-9a58-7b881017c4d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/Comment.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/mobile/src/components/CommentsList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -90,7 +89,10 @@
       <workItem from="1586167555276" duration="95000" />
       <workItem from="1586211800743" duration="4799000" />
       <workItem from="1586253846039" duration="28000" />
-      <workItem from="1586299244412" duration="1685000" />
+      <workItem from="1586299244412" duration="2036000" />
+      <workItem from="1586307250941" duration="63000" />
+      <workItem from="1586539139345" duration="4760000" />
+      <workItem from="1586554370522" duration="4865000" />
     </task>
     <servers />
   </component>
@@ -126,9 +128,9 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="600" height="440" key="javadoc.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1584810486265" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586300287803">
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1586563142580">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586300287803" />
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1586563142580" />
   </component>
 </project>

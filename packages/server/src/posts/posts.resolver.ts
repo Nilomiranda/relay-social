@@ -13,10 +13,17 @@ import { ObjectTypeDefinitionFactory } from '@nestjs/graphql/dist/schema-builder
 import { PostPayload } from './models/post.payload';
 import { fromGlobalId, toGlobalId } from 'graphql-relay';
 import { CommentsConnection } from '../comments/model/comments.connection';
+import { CommentsResolver } from '../comments/comments.resolver';
+import { CommentsService } from '../comments/comments.service';
+import { Comment } from '../comments/model/comment.entity';
+import { CommentEdge } from '../comments/model/comment.edge';
 
 @Resolver(of => Post)
 export class PostsResolver {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(
+    private readonly postsService: PostsService,
+    private readonly commentsService: CommentsService,
+  ) {}
 
   @UseGuards(GqlAuthGuard)
   @Mutation(type => PostPayload)
@@ -41,21 +48,16 @@ export class PostsResolver {
     @CurrentUser() user: User,
     @Args({ name: 'pagination', nullable: true, type: () => PageArgs }) pagination: PageArgs,
     @Args({ name: 'first', nullable: true, type: () => Float }) first: number,
-    @Args({ name: 'after', nullable: true, type: () => Float }) after: number,
+    @Args({ name: 'after', nullable: true, type: () => String }) after: string,
     @Args({ name: 'last', nullable: true, type: () => Float }) last: number,
-    @Args({ name: 'before', nullable: true, type: () => Float }) before: number,
+    @Args({ name: 'before', nullable: true, type: () => String }) before: string,
+    @Args({ name: 'order', nullable: true, type: () => String }) order: 'ASC' | 'DESC',
     @Args({ name: 'userId', nullable: true, type: () => Float })
     userId?: number,
   ) {
-    // let first, after, last, before;
-    // first = pagination?.first;
-    // after = pagination?.after;
-    // last = pagination?.last;
-    // before = pagination?.before;
-
     const res: PaginationResponse<Post> = await this.postsService.getPosts({
       userId,
-      pagination: { first, after, last, before },
+      pagination: { first, after, last, before, order },
     });
 
     const { data: posts } = res;
@@ -97,5 +99,33 @@ export class PostsResolver {
     console.log('type -> ', type);
     const { id } = parent;
     return toGlobalId(type, id);
+  }
+
+  @ResolveField(returns => CommentsConnection)
+  async comments(
+    @Parent() parent: Post,
+    @Args({ name: 'first', nullable: true, type: () => Float }) first: number,
+    @Args({ name: 'after', nullable: true, type: () => String }) after: string,
+    @Args({ name: 'last', nullable: true, type: () => Float }) last: number,
+    @Args({ name: 'before', nullable: true, type: () => String }) before: string,
+    @Args({ name: 'order', nullable: true, type: () => String }) order: 'ASC' | 'DESC',
+  ) {
+    console.log('post in comments resolve field -> ', parent);
+    // await this.postsService.getCommentsFromPost(parent.id);
+    const res: PaginationResponse<Comment> = await this.commentsService.getComments({
+      pagination: { first, after, last, before, order },
+    });
+
+    const { data: comments } = res;
+
+    const commentsEdge = comments.map(comment => new CommentEdge({
+      node: comment,
+      cursor: comment.id,
+    }));
+
+    return {
+      edges: commentsEdge,
+      pageInfo: new PageInfo(res.pageInfo),
+    }
   }
 }

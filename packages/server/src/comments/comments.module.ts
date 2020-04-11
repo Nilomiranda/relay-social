@@ -9,5 +9,6 @@ import { User } from '../users/models/user.entity';
 @Module({
   providers: [CommentsResolver, CommentsService],
   imports: [TypeOrmModule.forFeature([Comment, Post, User])],
+  exports: [CommentsService],
 })
 export class CommentsModule {}

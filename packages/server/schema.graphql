@@ -70,7 +70,7 @@ type Post implements Node {
   updatedDate: DateTime!
   content: String!
   user: User!
-  comments: CommentsConnection!
+  comments(order: String, before: String, last: Float, after: String, first: Float): CommentsConnection!
 }
 
 type PostEdge {
@@ -94,10 +94,10 @@ type PostsConnection {
 type Query {
   users: [User!]!
   user(id: String!): User!
-  posts(userId: Float, before: Float, last: Float, after: Float, first: Float, pagination: PageArgs): PostsConnection!
+  posts(userId: Float, order: String, before: String, last: Float, after: String, first: Float, pagination: PageArgs): PostsConnection!
   post(id: String!): Post!
   validateSession(token: String!): User!
-  comments: CommentsConnection!
+  comments(order: String, before: String, last: Float, after: String, first: Float): CommentsConnection!
 }
 
 type Session implements Node {
