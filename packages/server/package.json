@@ -24,7 +24,7 @@
     "@nestjs/platform-express": "^6.0.0",
     "@types/graphql-relay": "^0.4.11",
     "apollo-server-express": "^2.11.0",
-    "bcrypt": "3.0.6",
+    "bcrypt": "5.0.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.1",
     "graphql-relay": "^0.6.0",
